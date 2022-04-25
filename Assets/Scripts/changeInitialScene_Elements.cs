@@ -53,19 +53,16 @@ public class changeInitialScene_Elements : MonoBehaviour
 
     //-----------------------
     public void changeImageChapter0(){
-        Debug.Log("chapter0");
         chapterSelected="chapter 0";
         imagenFondo.GetComponent<Image>().sprite = imagenes[0];
     }
 
     public void changeImageChapter1(){
-        Debug.Log("chapter1");
         chapterSelected="chapter 1";
         imagenFondo.GetComponent<Image>().sprite = imagenes[1];
     }
 
     public void changeImageChapter2(){
-        Debug.Log("chapter2");
         chapterSelected="chapter 2";
         imagenFondo.GetComponent<Image>().sprite = imagenes[2];
     }

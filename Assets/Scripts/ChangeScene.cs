@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void LoadScene(string escena){
+    public static void LoadScene(string escena){
         SceneManager.LoadScene(escena);
     }
 
@@ -17,10 +17,10 @@ public class ChangeScene : MonoBehaviour
         else if(changeInitialScene_Elements.chapterSelected=="chapter 1"){
             SceneManager.LoadScene("SampleScene");
         }
-        else if(changeInitialScene_Elements.chapterSelected=="chapter 2"){
+        else if(changeInitialScene_Elements.chapterSelected=="chapter 2"){//TODO
             SceneManager.LoadScene("SampleScene");
         }
-        else if(changeInitialScene_Elements.chapterSelected=="chapter 3"){
+        else if(changeInitialScene_Elements.chapterSelected=="chapter 3"){//TODO
             SceneManager.LoadScene("SampleScene");
         }
         

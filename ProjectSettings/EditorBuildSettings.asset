@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/transition_part1_to_2.unity
     guid: 871e6b7accaf884a2901f1dd43b4915a
+  - enabled: 1
+    path: Assets/Scenes/InitialScene_Story.unity
+    guid: da7395d6266bca4c0bc2524d44a3a7f4
   m_configObjects: {}

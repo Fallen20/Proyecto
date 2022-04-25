@@ -3700,8 +3700,14 @@ MonoBehaviour:
   instructionsCanvas: {fileID: 771786673}
   instructions: {fileID: 2140047366}
   spriteExpressions: {fileID: 919326384}
-  expresion2: {fileID: 21300000, guid: 1604511b6db63bf49a5ced0dcf59959e, type: 3}
-  expresion1: {fileID: 21300000, guid: 61c71095bbb1cf84badf46e6aefa52fc, type: 3}
+  expresion1: {fileID: 21300000, guid: 6574bc3ea454fef34b4a72dad837e7f2, type: 3}
+  expresion2: {fileID: 21300000, guid: 86e5eb5734c4c00b496476df1a4f2cde, type: 3}
+  expresion3: {fileID: 21300000, guid: d958a3c138efc0bbfb44d7874c9351b2, type: 3}
+  expresion4: {fileID: 21300000, guid: d84a2f29573187fc6bf2c86850b27ec7, type: 3}
+  expresion5: {fileID: 21300000, guid: 8de363b70796ad4728f0ac39d71a036d, type: 3}
+  expresionTrashBag: {fileID: 21300000, guid: 3c076369a52b6b3dc9ca6234e2d581f9, type: 3}
+  expresionTrash: {fileID: 21300000, guid: 6669d8abf07cfccd680d9faaa591557f, type: 3}
+  expresionTrashCan: {fileID: 21300000, guid: 07f9db127f3d8e38caa55f7e1001538b, type: 3}
 --- !u!95 &480542604
 Animator:
   serializedVersion: 3
@@ -143412,7 +143418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6574bc3ea454fef34b4a72dad837e7f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
