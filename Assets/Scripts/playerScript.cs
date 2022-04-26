@@ -157,7 +157,7 @@ public class playerScript : MonoBehaviour
 				interactable(objetoTrigger);
 			}
 			
-	    	Debug.Log(animator.GetBool("BotMove"));
+	    	  	
     	}
     	 
     }
