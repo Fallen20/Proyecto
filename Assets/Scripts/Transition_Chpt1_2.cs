@@ -8,11 +8,13 @@ public class Transition_Chpt1_2 : MonoBehaviour{
     public Animator animator2;
     public Animator animator3;
     public Animator animator4;
+    public Animator fadeAnimator;
 
     public Canvas canvas1;
     public Canvas canvas2;
     public Canvas canvas3;
     public Canvas canvas4;
+    public Canvas canvasFade;
 
     private bool primero=false;
     private bool segundo=false;
@@ -25,6 +27,7 @@ public class Transition_Chpt1_2 : MonoBehaviour{
         canvas2.GetComponent<Canvas>().enabled = false;
         canvas3.GetComponent<Canvas>().enabled = false;
         canvas4.GetComponent<Canvas>().enabled = false;
+        canvasFade.GetComponent<Canvas>().enabled = false;
 
         animator1.SetBool("running", true);//empezar animacion
     }
@@ -39,14 +42,30 @@ public class Transition_Chpt1_2 : MonoBehaviour{
 
         if(animator2.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !segundo){//acaba la animacion
             segundo=true;
-            Invoke("showAnimation3",7f);//tras un segundo pone la siguiente animacion
+
+            Invoke("showFade",7f);
+            Invoke("hideFade",8.7f);
+            Invoke("showAnimation3",8.8f);//tras un segundo pone la siguiente animacion
         }
          if(animator3.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !tercero){//acaba la animacion
             tercero=true;
-            Invoke("showAnimation4",15f);//tras un segundo pone la siguiente animacion
+
+            Invoke("showAnimation4",13f);//tras un segundo pone la siguiente animacion
         }
     }
 
+//-----------------------
+    void showFade(){
+        canvasFade.GetComponent<Canvas>().enabled = true;
+        fadeAnimator.SetBool("fade", true);
+    }
+
+    void hideFade(){
+
+        fadeAnimator.SetBool("fade", false);
+    }
+
+//-----------------------
     void showAnimation2(){
         //ocultar los canvas
         canvas1.GetComponent<Canvas>().enabled = false;
