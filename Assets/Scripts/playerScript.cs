@@ -178,34 +178,12 @@ public class playerScript : MonoBehaviour
 	void interactable(GameObject coll){
 		canMove=false;
 
-		spriteTocado="";
 
 		//pillas el nombre de lo que tocas
-		if(coll.name=="tuft1"){spriteTocado=coll.name;}
-		else if(coll.name=="tuft2"){spriteTocado=coll.name;}
-		else if(coll.name=="tuft3"){spriteTocado=coll.name;}
-		else if(coll.name=="tuft4"){spriteTocado=coll.name;}
-		else if(coll.name=="tuftFinale"){spriteTocado=coll.name;}
+		spriteTocado=coll.name;
 
 		//entonces decides las cosas
 		decideText();
-		//----------------
-		if(coll.name=="Interactable_TrashCan"){//contenedores
-			text.text="Sometimes I find food inside. Not the time to do it now";
-			spriteExpressions.sprite=expresionTrashCan;
-		}
-
-		if(coll.name=="Interactable_TrashBag"){//bolsas basura
-			text.text="...ew";
-			spriteExpressions.sprite=expresionTrashBag;
-		}
-
-		if(coll.name=="Interactable_Trash"){//cubos basura
-			text.text="This things are very shiny";
-			spriteExpressions.sprite=expresionTrash;
-		}
-
-		//----------
 
 		//sacar canvas
 		canvas.GetComponent<Canvas>().enabled = true;
@@ -245,12 +223,34 @@ public class playerScript : MonoBehaviour
    	}
 //----------------------
 	public void decideText(){
+
 		//cambias texto y expresion acorde a las variables
+		if(spriteTocado=="Interactable_TrashCan"){//contenedores
+			text.text="Sometimes I find food inside. Not the time to do it now";
+			spriteExpressions.sprite=expresionTrashCan;
+			return;
+		}
+
+		if(spriteTocado=="Interactable_TrashBag"){//bolsas basura
+			text.text="...ew";
+			spriteExpressions.sprite=expresionTrashBag;
+			return;
+		}
+
+		if(spriteTocado=="Interactable_Trash"){//cubos basura
+			text.text="This things are very shiny";
+			spriteExpressions.sprite=expresionTrash;
+			return;
+		}
+
+		
 		if(variablesScene1.pillado1==0 && variablesScene1.pillado2==0 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
 			text.text=variablesScene1.pillado1Txt;
 
 			variablesScene1.pillado1=1;
 			spriteExpressions.sprite=expresion1;//surprised
+
+			return;
 		}
 
 		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==0 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
@@ -258,6 +258,7 @@ public class playerScript : MonoBehaviour
 
 			variablesScene1.pillado2=1;
 			spriteExpressions.sprite=expresion2;//worried
+			return;
 		}
 
 		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
@@ -265,6 +266,7 @@ public class playerScript : MonoBehaviour
 
 			variablesScene1.pillado3=1;
 			spriteExpressions.sprite=expresion3;//fear
+			return;
 		}
 
 		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==1 && variablesScene1.pillado4==0){
@@ -272,11 +274,13 @@ public class playerScript : MonoBehaviour
 
 			variablesScene1.pillado4=1;
 			spriteExpressions.sprite=expresion4;//dark expression 1
+			return;
 		}
 
 		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==1 && variablesScene1.pillado4==1){
 			text.text=variablesScene1.pilladoFinaleTxt;
 			spriteExpressions.sprite=expresion5;//dark expression 2
+			return;
 		}
 
 	}

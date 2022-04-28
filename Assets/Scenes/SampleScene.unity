@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 55186150}
   - component: {fileID: 55186152}
   - component: {fileID: 55186151}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 66948047}
   - component: {fileID: 66948049}
   - component: {fileID: 66948048}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 97463830}
   - component: {fileID: 97463832}
   - component: {fileID: 97463831}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 99008565}
   - component: {fileID: 99008567}
   - component: {fileID: 99008566}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 169638398}
   - component: {fileID: 169638400}
   - component: {fileID: 169638399}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 316313618}
   - component: {fileID: 316313620}
   - component: {fileID: 316313619}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3231,7 +3231,7 @@ GameObject:
   - component: {fileID: 329840184}
   - component: {fileID: 329840186}
   - component: {fileID: 329840185}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3449,7 +3449,7 @@ GameObject:
   - component: {fileID: 427465605}
   - component: {fileID: 427465607}
   - component: {fileID: 427465606}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3808,7 +3808,7 @@ GameObject:
   - component: {fileID: 550295084}
   - component: {fileID: 550295086}
   - component: {fileID: 550295085}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4157,7 +4157,7 @@ GameObject:
   - component: {fileID: 586606924}
   - component: {fileID: 586606926}
   - component: {fileID: 586606925}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4484,7 +4484,7 @@ GameObject:
   - component: {fileID: 699333535}
   - component: {fileID: 699333537}
   - component: {fileID: 699333536}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137863,7 +137863,7 @@ GameObject:
   - component: {fileID: 923350249}
   - component: {fileID: 923350251}
   - component: {fileID: 923350250}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137972,7 +137972,7 @@ GameObject:
   - component: {fileID: 934057387}
   - component: {fileID: 934057389}
   - component: {fileID: 934057388}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138190,7 +138190,7 @@ GameObject:
   - component: {fileID: 952568622}
   - component: {fileID: 952568624}
   - component: {fileID: 952568623}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138299,7 +138299,7 @@ GameObject:
   - component: {fileID: 979231369}
   - component: {fileID: 979231371}
   - component: {fileID: 979231370}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138408,7 +138408,7 @@ GameObject:
   - component: {fileID: 979361903}
   - component: {fileID: 979361905}
   - component: {fileID: 979361904}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138517,7 +138517,7 @@ GameObject:
   - component: {fileID: 999213203}
   - component: {fileID: 999213205}
   - component: {fileID: 999213204}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138844,7 +138844,7 @@ GameObject:
   - component: {fileID: 1162800291}
   - component: {fileID: 1162800293}
   - component: {fileID: 1162800292}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138953,7 +138953,7 @@ GameObject:
   - component: {fileID: 1166202446}
   - component: {fileID: 1166202448}
   - component: {fileID: 1166202447}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139622,7 +139622,7 @@ GameObject:
   - component: {fileID: 1252530886}
   - component: {fileID: 1252530888}
   - component: {fileID: 1252530887}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139731,7 +139731,7 @@ GameObject:
   - component: {fileID: 1264947802}
   - component: {fileID: 1264947804}
   - component: {fileID: 1264947803}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139840,7 +139840,7 @@ GameObject:
   - component: {fileID: 1272881137}
   - component: {fileID: 1272881136}
   - component: {fileID: 1272881135}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139949,7 +139949,7 @@ GameObject:
   - component: {fileID: 1322212939}
   - component: {fileID: 1322212941}
   - component: {fileID: 1322212940}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140058,7 +140058,7 @@ GameObject:
   - component: {fileID: 1368819230}
   - component: {fileID: 1368819232}
   - component: {fileID: 1368819231}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140250,7 +140250,7 @@ GameObject:
   - component: {fileID: 1441557786}
   - component: {fileID: 1441557788}
   - component: {fileID: 1441557787}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140296,7 +140296,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.7386484, y: 0.73637295}
-  m_EdgeRadius: 0.3
+  m_EdgeRadius: 0.2
 --- !u!212 &1441557788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140359,7 +140359,7 @@ GameObject:
   - component: {fileID: 1467205087}
   - component: {fileID: 1467205089}
   - component: {fileID: 1467205088}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140468,7 +140468,7 @@ GameObject:
   - component: {fileID: 1471221389}
   - component: {fileID: 1471221391}
   - component: {fileID: 1471221390}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140514,7 +140514,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.3899436, y: 0.5271511}
-  m_EdgeRadius: 0.3
+  m_EdgeRadius: 0.2
 --- !u!212 &1471221391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140806,7 +140806,7 @@ GameObject:
   - component: {fileID: 1548803842}
   - component: {fileID: 1548803844}
   - component: {fileID: 1548803843}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141024,7 +141024,7 @@ GameObject:
   - component: {fileID: 1565204991}
   - component: {fileID: 1565204993}
   - component: {fileID: 1565204992}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141872,7 +141872,7 @@ GameObject:
   - component: {fileID: 1785616779}
   - component: {fileID: 1785616781}
   - component: {fileID: 1785616780}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142112,7 +142112,7 @@ GameObject:
   - component: {fileID: 1860178709}
   - component: {fileID: 1860178711}
   - component: {fileID: 1860178710}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142221,7 +142221,7 @@ GameObject:
   - component: {fileID: 1984665257}
   - component: {fileID: 1984665259}
   - component: {fileID: 1984665258}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142330,7 +142330,7 @@ GameObject:
   - component: {fileID: 2009413460}
   - component: {fileID: 2009413462}
   - component: {fileID: 2009413461}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142439,7 +142439,7 @@ GameObject:
   - component: {fileID: 2041876455}
   - component: {fileID: 2041876457}
   - component: {fileID: 2041876456}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142548,7 +142548,7 @@ GameObject:
   - component: {fileID: 2042025704}
   - component: {fileID: 2042025706}
   - component: {fileID: 2042025705}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142657,7 +142657,7 @@ GameObject:
   - component: {fileID: 2046457704}
   - component: {fileID: 2046457706}
   - component: {fileID: 2046457705}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Interactable_TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142905,6 +142905,14 @@ PrefabInstance:
       propertyPath: fadeAnimation
       value: 
       objectReference: {fileID: 510394688}
+    - target: {fileID: 5930867210301532907, guid: d72810b96309046609e3176d06fac618, type: 3}
+      propertyPath: expresionTrash
+      value: 
+      objectReference: {fileID: 21300000, guid: 07f9db127f3d8e38caa55f7e1001538b, type: 3}
+    - target: {fileID: 5930867210301532907, guid: d72810b96309046609e3176d06fac618, type: 3}
+      propertyPath: expresionTrashCan
+      value: 
+      objectReference: {fileID: 21300000, guid: 6669d8abf07cfccd680d9faaa591557f, type: 3}
     - target: {fileID: 5930867210301532907, guid: d72810b96309046609e3176d06fac618, type: 3}
       propertyPath: spriteExpressions
       value: 
