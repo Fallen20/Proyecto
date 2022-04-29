@@ -16,15 +16,15 @@ public class variable_Text : MonoBehaviour
     public static string wisp_FirstDay1="Ganma?!";
     public static string wisp_FirstDay2="What are you doing here?!";
     public static string ganma_FirstDay1="I-I tried to come save you!";
-    public static string wisp_FirstDay3="I told you to run if something happened";
+    public static string wisp_FirstDay3="I told you to run if something happened.";
     public static string ganma_FirstDay2="I know but-!";
-    public static string wisp_FirstDay4="Ganma, now we are both trapped here";
+    public static string wisp_FirstDay4="Ganma, now we are both trapped here.";
     public static string ganma_FirstDay3="...";
-    public static string wisp_FirstDay5="All we can do now is wait";
+    public static string wisp_FirstDay5="All we can do now is wait.";
     public static string ganma_FirstDay4="I'm sorry...";
     public static string wisp_FirstDay6="I know, sorry for yelling.";
     //cambiar expresiones sin texto
-    public static string wisp_FirstDay7="Don't be scared. I'll protect you no matter what";
+    public static string wisp_FirstDay7="Don't be scared. I'll protect you no matter what.";
     
     //-----------------
     //interacciones primer dia
@@ -35,17 +35,20 @@ public class variable_Text : MonoBehaviour
 
 
     //-----------------
+    //interacciones segundo dia
+
     public static string kiyu_SecondDay="Did you sleep well? Akane is still sleep";
 
-    //interacciones segundo dia
+//--------
+    //misiones
     public static string koma_SecondDay_PreMission_1="Big brother Ganma!";
     public static string awami_SecondDay_PreMission_1="Are you here to play with us?";
+    
     public static string ganmaMissionResponse_1_Ok="I'm always up to! What are playing today?";
     public static string awami_SecondDay_PreMission_2="Hide and seek!";
     public static string koma_SecondDay_PreMission_2="Go with mom and we'll hide!";
 
-    //misiones
-    //--------
+    
     public static string koma_SecondDay_Mission="You found me!";
     public static string awami_SecondDay_Mission="I'm a box!";
 

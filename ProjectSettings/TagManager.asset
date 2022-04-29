@@ -17,6 +17,27 @@ TagManager:
   - canvasInicio
   - canvasChapt
   - canvasExtra
+  - canvasGanma
+  - textoGanma
+  - imagenGanma
+  - canvasOtros
+  - textoOtros
+  - imagenOtros
+  - quienHablaOtros
+  - canvasColorGanma
+  - teleportGreenLeft_Day2
+  - teleportGreenRight_Day2
+  - teleportGreenLeft_Day3
+  - teleportGreenRight_Day3
+  - teleportBlueLeft_Day3
+  - teleportBlueRight_Day3
+  - teleportYellowLeft_Day3
+  - teleportYellowRight_Day3
+  - secondDay
+  - thirdDay
+  - forthDay
+  - fifthDay
+  - gameObjectBotonesMision
   layers:
   - Default
   - TransparentFX

@@ -15,12 +15,6 @@ public class playerScript : MonoBehaviour
 	//animator externo
 	public Animator fadeAnimation;
 
-	//variables a usar
-    public float velocidad=2f;
-	private Vector3 moveDelta;
-	private bool canMove=true;
-	private string spriteTocado;
-
 	//expresiones, canvas
 	public Canvas canvas;
 	public Text text;
@@ -78,7 +72,7 @@ public class playerScript : MonoBehaviour
 		tuftFinale.GetComponent<SpriteRenderer>().enabled = false;
 
 
-		canMove=false;
+		variablesGeneral.canMove=false;
 		//sacar las instrucciones
 			instructions.text="Move with WASD or arrows. Interact with objects with E";
 			Invoke("changeInitialText", 4f);//tras 20 seg saca el metodo
@@ -91,7 +85,7 @@ public class playerScript : MonoBehaviour
     	float horitontalMove=Input.GetAxisRaw("Horizontal");
     	float verticalMove=Input.GetAxisRaw("Vertical");
     	
-    	moveDelta=new Vector3(horitontalMove, verticalMove,0);
+    	variablesGeneral.moveDelta=new Vector3(horitontalMove, verticalMove,0);
 		RaycastHit2D hit;
 
 		//reset animaciones
@@ -101,15 +95,15 @@ public class playerScript : MonoBehaviour
 
 
 		//mirar si ha pillado todos
-		if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==1 && variablesScene1.pillado4==1){
+		if(variablesGeneral.pillado1==1 && variablesGeneral.pillado2==1 && variablesGeneral.pillado3==1 && variablesGeneral.pillado4==1){
 			tuftFinale.GetComponent<SpriteRenderer>().enabled = true;
 		}
-    	if(canMove){//apreta D
-			if(moveDelta.x<0){
+    	if(variablesGeneral.canMove){//apreta D
+			if(variablesGeneral.moveDelta.x<0){
 				animator.SetBool("horizMove",true);
 				transform.localScale=Vector3.one;
 			}
-			else if(moveDelta.x>0){//apreta A
+			else if(variablesGeneral.moveDelta.x>0){//apreta A
 				animator.SetBool("horizMove",true);
 				transform.localScale=new Vector3(-1,1,1);//flip
 			}
@@ -117,37 +111,37 @@ public class playerScript : MonoBehaviour
 			hit=Physics2D.BoxCast(
 									transform.position,
 									collider.size,
-									0,new Vector2(moveDelta.x,0),
-									Mathf.Abs(moveDelta.x*velocidad*Time.deltaTime),
+									0,new Vector2(variablesGeneral.moveDelta.x,0),
+									Mathf.Abs(variablesGeneral.moveDelta.x*variablesGeneral.velocidad*Time.deltaTime),
 									LayerMask.GetMask("Actor","blockWall")//con que layers interactua
 								);
 			if(hit.collider==null){//no hemos chocado
 				//mover
-				transform.Translate(moveDelta.x*velocidad*Time.deltaTime,0,0);
+				transform.Translate(variablesGeneral.moveDelta.x*variablesGeneral.velocidad*Time.deltaTime,0,0);
 
 
 			}
 			
 		
-			if(moveDelta.y<0){//apreta w
+			if(variablesGeneral.moveDelta.y<0){//apreta w
 				animator.SetBool("BotMove",true);
 				transform.localScale=Vector3.one;
 			}
-			else if(moveDelta.y>0){//apreta s
+			else if(variablesGeneral.moveDelta.y>0){//apreta s
 	    		animator.SetBool("topMove",true);
 	    	}
 
 			hit=Physics2D.BoxCast(
 									transform.position,
 									collider.size,
-									0,new Vector2(0,moveDelta.y),
-									Mathf.Abs(moveDelta.y*velocidad*Time.deltaTime),
+									0,new Vector2(0,variablesGeneral.moveDelta.y),
+									Mathf.Abs(variablesGeneral.moveDelta.y*variablesGeneral.velocidad*Time.deltaTime),
 									LayerMask.GetMask("Actor","blockWall")//busca objetos con estas layers
 								);
 
 			if(hit.collider==null){//no hemos chocado
 				//mover
-				transform.Translate(0,moveDelta.y*velocidad*Time.deltaTime,0);
+				transform.Translate(0,variablesGeneral.moveDelta.y*variablesGeneral.velocidad*Time.deltaTime,0);
 
 			}
 			
@@ -176,11 +170,11 @@ public class playerScript : MonoBehaviour
 
 //--------------------------
 	void interactable(GameObject coll){
-		canMove=false;
+		variablesGeneral.canMove=false;
 
 
 		//pillas el nombre de lo que tocas
-		spriteTocado=coll.name;
+		variablesGeneral.spriteTocado=coll.name;
 
 		//entonces decides las cosas
 		decideText();
@@ -191,26 +185,26 @@ public class playerScript : MonoBehaviour
 //----------------
    	public void hideCanvas(){
 		//quitar tufts pillado
-   		if(spriteTocado=="tuft1"){
+   		if(variablesGeneral.spriteTocado=="tuft1"){
 			tuft1.gameObject.SetActive(false);
 		}
-		if(spriteTocado=="tuft2"){
+		if(variablesGeneral.spriteTocado=="tuft2"){
 			tuft2.gameObject.SetActive(false);
 		}
-		if(spriteTocado=="tuft3"){
+		if(variablesGeneral.spriteTocado=="tuft3"){
 			tuft3.gameObject.SetActive(false);
 		}
-		if(spriteTocado=="tuft4"){
+		if(variablesGeneral.spriteTocado=="tuft4"){
 			tuft4.gameObject.SetActive(false);
 		}
 
-		if(spriteTocado!="tuftFinale"){
+		if(variablesGeneral.spriteTocado!="tuftFinale"){
 			//quitar canvas y poder moverse
 			canvas.GetComponent<Canvas>().enabled = false;
-			canMove=true;
+			variablesGeneral.canMove=true;
 		}
 
-		else if(spriteTocado=="tuftFinale"){
+		else if(variablesGeneral.spriteTocado=="tuftFinale"){
 			tuftFinale.gameObject.SetActive(false);
 			//fade
 			fadeAnimation.SetBool("fade", true);
@@ -225,60 +219,60 @@ public class playerScript : MonoBehaviour
 	public void decideText(){
 
 		//cambias texto y expresion acorde a las variables
-		if(spriteTocado=="Interactable_TrashCan"){//contenedores
+		if(variablesGeneral.spriteTocado=="Interactable_TrashCan"){//contenedores
 			text.text="Sometimes I find food inside. Not the time to do it now";
 			spriteExpressions.sprite=expresionTrashCan;
 			return;
 		}
 
-		if(spriteTocado=="Interactable_TrashBag"){//bolsas basura
+		if(variablesGeneral.spriteTocado=="Interactable_TrashBag"){//bolsas basura
 			text.text="...ew";
 			spriteExpressions.sprite=expresionTrashBag;
 			return;
 		}
 
-		if(spriteTocado=="Interactable_Trash"){//cubos basura
+		if(variablesGeneral.spriteTocado=="Interactable_Trash"){//cubos basura
 			text.text="This things are very shiny";
 			spriteExpressions.sprite=expresionTrash;
 			return;
 		}
 
 		
-		if(variablesScene1.pillado1==0 && variablesScene1.pillado2==0 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
-			text.text=variablesScene1.pillado1Txt;
+		if(variablesGeneral.pillado1==0 && variablesGeneral.pillado2==0 && variablesGeneral.pillado3==0 && variablesGeneral.pillado4==0){
+			text.text=variablesGeneral.pillado1Txt;
 
-			variablesScene1.pillado1=1;
+			variablesGeneral.pillado1=1;
 			spriteExpressions.sprite=expresion1;//surprised
 
 			return;
 		}
 
-		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==0 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
-			text.text=variablesScene1.pillado2Txt;
+		else if(variablesGeneral.pillado1==1 && variablesGeneral.pillado2==0 && variablesGeneral.pillado3==0 && variablesGeneral.pillado4==0){
+			text.text=variablesGeneral.pillado2Txt;
 
-			variablesScene1.pillado2=1;
+			variablesGeneral.pillado2=1;
 			spriteExpressions.sprite=expresion2;//worried
 			return;
 		}
 
-		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==0 && variablesScene1.pillado4==0){
-			text.text=variablesScene1.pillado3Txt;
+		else if(variablesGeneral.pillado1==1 && variablesGeneral.pillado2==1 && variablesGeneral.pillado3==0 && variablesGeneral.pillado4==0){
+			text.text=variablesGeneral.pillado3Txt;
 
-			variablesScene1.pillado3=1;
+			variablesGeneral.pillado3=1;
 			spriteExpressions.sprite=expresion3;//fear
 			return;
 		}
 
-		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==1 && variablesScene1.pillado4==0){
-			text.text=variablesScene1.pillado4Txt;
+		else if(variablesGeneral.pillado1==1 && variablesGeneral.pillado2==1 && variablesGeneral.pillado3==1 && variablesGeneral.pillado4==0){
+			text.text=variablesGeneral.pillado4Txt;
 
-			variablesScene1.pillado4=1;
+			variablesGeneral.pillado4=1;
 			spriteExpressions.sprite=expresion4;//dark expression 1
 			return;
 		}
 
-		else if(variablesScene1.pillado1==1 && variablesScene1.pillado2==1 && variablesScene1.pillado3==1 && variablesScene1.pillado4==1){
-			text.text=variablesScene1.pilladoFinaleTxt;
+		else if(variablesGeneral.pillado1==1 && variablesGeneral.pillado2==1 && variablesGeneral.pillado3==1 && variablesGeneral.pillado4==1){
+			text.text=variablesGeneral.pilladoFinaleTxt;
 			spriteExpressions.sprite=expresion5;//dark expression 2
 			return;
 		}
@@ -299,6 +293,6 @@ public class playerScript : MonoBehaviour
 	public void hideInstructionsCanvas(){
 		//no dejar mover hasta dentro de un par de segundos y ocultar canvas
 		instructionsCanvas.GetComponent<Canvas>().enabled = false;
-		canMove=true;
+		variablesGeneral.canMove=true;
 	}
 }
