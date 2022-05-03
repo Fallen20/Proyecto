@@ -16,7 +16,7 @@ public class variable_Text : MonoBehaviour
     public static string wisp_FirstDay1="Ganma?!";
     public static string wisp_FirstDay2="What are you doing here?!";
     public static string ganma_FirstDay1="I-I tried to come save you!";
-    public static string wisp_FirstDay3="I told you to run if something happened.";
+    public static string wisp_FirstDay3="I told you to run if something happened!";
     public static string ganma_FirstDay2="I know but-!";
     public static string wisp_FirstDay4="Ganma, now we are both trapped here.";
     public static string ganma_FirstDay3="...";

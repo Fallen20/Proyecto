@@ -1,0 +1,341 @@
+Unity Editor version:    2020.3.31f1 (6b54b7616050)
+Branch:                  2020.3/release
+Build type:              Release
+Batch mode:              YES
+System name:             Linux
+Distro version:          #1 SMP Debian 5.10.46-4 (2021-08-03)
+Kernel version:          5.10.0-8-amd64
+Architecture:            x86_64
+Available memory:        15880 MB
+Using pre-set license
+Pro License: NO
+Desktop is 1920 x 1080 @ 60 Hz
+
+COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/home/users/inf/wiam2/iam47264842/Documentos/GitHub/Proyecto
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+40495
+Successfully changed project path to: /home/users/inf/wiam2/iam47264842/Documentos/GitHub/Proyecto
+/home/users/inf/wiam2/iam47264842/Documentos/GitHub/Proyecto
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 43,30 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Initialize engine version: 2020.3.31f1 (6b54b7616050)
+[Subsystems] Discovering subsystems at path /home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /home/users/inf/wiam2/iam47264842/Documentos/GitHub/Proyecto/Assets
+GLX Extensions: GLX_ARB_create_context GLX_ARB_create_context_no_error GLX_ARB_create_context_profile GLX_ARB_fbconfig_float GLX_ARB_framebuffer_sRGB GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_buffer_age GLX_EXT_create_context_es2_profile GLX_EXT_create_context_es_profile GLX_EXT_fbconfig_packed_float GLX_EXT_framebuffer_sRGB GLX_EXT_import_context GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_texture_from_pixmap GLX_EXT_visual_info GLX_EXT_visual_rating GLX_MESA_copy_sub_buffer GLX_MESA_query_renderer GLX_MESA_swap_control GLX_OML_swap_method GLX_OML_sync_control GLX_SGIS_multisample GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGIX_visual_select_group GLX_SGI_make_current_read GLX_SGI_video_sync 
+Renderer: Mesa Intel(R) UHD Graphics 630 (CFL GT2)
+Vendor:   Intel
+Version:  4.6 (Core Profile) Mesa 20.3.5
+GLES:     0
+ GL_3DFX_texture_compression_FXT1 GL_AMD_conservative_depth GL_AMD_depth_clamp_separate GL_AMD_draw_buffers_blend GL_AMD_gpu_shader_int64 GL_AMD_multi_draw_indirect GL_AMD_performance_monitor GL_AMD_pinned_memory GL_AMD_query_buffer_object GL_AMD_seamless_cubemap_per_texture GL_AMD_shader_stencil_export GL_AMD_shader_trinary_minmax GL_AMD_texture_texture4 GL_AMD_vertex_shader_layer GL_AMD_vertex_shader_viewport_index GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ARB_ES2_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_ES3_compatibility GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_compressed_texture_pixel_storage GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_conservative_depth GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB
+_depth_clamp GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_elements_base_vertex GL_ARB_draw_indirect GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragment_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_po
+int_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoking_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_shading GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_stencil_export GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shader_viewport_layer_array GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_ARB_texture_barrier G
+L_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map_array GL_ARB_texture_filter_anisotropic GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewpor
+t_array GL_ATI_blend_equation_separate GL_ATI_texture_float GL_EXT_EGL_image_storage GL_EXT_EGL_sync GL_EXT_abgr GL_EXT_blend_equation_separate GL_EXT_demote_to_helper_invocation GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_pixel_buffer_object GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_integer_mix GL_EXT_shader_samples_identical GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_snorm GL_EXT_texture_swizzle GL_EXT_ti
+mer_query GL_EXT_transform_feedback GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_IBM_multimode_draw_arrays GL_INTEL_blackhole_render GL_INTEL_conservative_rasterization GL_INTEL_performance_query GL_INTEL_shader_atomic_float_minmax GL_INTEL_shader_integer_functions2 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_KHR_parallel_shader_compile GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_signed_rgba GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_copy_image GL_NV_depth_clamp GL_NV_fragment_shader_interlock GL_NV_packed_depth_stencil GL_NV_texture_barrier GL_OES_EGL_image GL_S3_s3tc
+OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle -2106907056
+Initialize mono
+Mono path[0] = '/home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/Managed'
+Mono path[1] = '/home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56707
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: /home/users/inf/wiam2/iam47264842/Unity/Hub/Editor/2020.3.31f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0,001233 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 39,50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,483 seconds
+Domain Reload Profiling:
+	ReloadAssembly (483ms)
+		BeginReloadAssembly (42ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (385ms)
+			LoadAssemblies (41ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (116ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (26ms)
+			SetupLoadedEditorAssemblies (176ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (40ms)
+				BeforeProcessingInitializeOnLoad (6ms)
+				ProcessInitializeOnLoadAttributes (103ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0,001467 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 39,95 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,894 seconds
+Domain Reload Profiling:
+	ReloadAssembly (894ms)
+		BeginReloadAssembly (116ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (15ms)
+		EndReloadAssembly (731ms)
+			LoadAssemblies (73ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (225ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (308ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (40ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (189ms)
+				ProcessInitializeOnLoadMethodAttributes (14ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler after 0.00 seconds
+Refreshing native plugins compatible for Editor in 0,46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 2218 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 92,2 MB.
+System memory in use after: 92,1 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2653.
+Total: 5,886581 ms (FindLiveObjects: 0,208365 ms CreateObjectMapping: 0,082370 ms MarkObjects: 5,434411 ms  DeleteObjects: 0,160286 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Animation/OriginalSheets/chapter2/racoon_Sheet.png
+  artifactKey: Guid(3bba1fcdeca683f13b40220613238c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/racoon_Sheet.png using Guid(3bba1fcdeca683f13b40220613238c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '462d6a73338d63bda611e8ec3e893465') in 0,033537 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000136 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0000s_0002_Capa77.png
+  artifactKey: Guid(e265341e86097e37babd76b6a67fae4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0000s_0002_Capa77.png using Guid(e265341e86097e37babd76b6a67fae4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d369e84daf63ace89bc505a54419851') in 0,003519 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000196 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/santos2Sheet.png
+  artifactKey: Guid(d2680c55d3d3246b5ac4271204178a8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/santos2Sheet.png using Guid(d2680c55d3d3246b5ac4271204178a8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ddb91bb8b35174cfd5200515b6b7096') in 0,004265 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000201 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/koma_Sheet.png
+  artifactKey: Guid(6bc1a0669d301694e811deda09f817f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/koma_Sheet.png using Guid(6bc1a0669d301694e811deda09f817f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9606b92936dff9e351be1d4430e7f341') in 0,003584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000241 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/whiskersSheet.png
+  artifactKey: Guid(6917809af5a140e0e9860adbbdc29360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/whiskersSheet.png using Guid(6917809af5a140e0e9860adbbdc29360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '830d3faed4b10ce8dcd91e8f518643bb') in 0,004123 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000252 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0001_Capa75.png
+  artifactKey: Guid(34acd90fbb90444a897578ccc73e1f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0001_Capa75.png using Guid(34acd90fbb90444a897578ccc73e1f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdb8567db94025b8da22a4336272bba6') in 0,003561 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000283 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/komaHidden_Sheet.png
+  artifactKey: Guid(919c691de01d9aa80ba48340a282d696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/komaHidden_Sheet.png using Guid(919c691de01d9aa80ba48340a282d696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2e12c1c1de1f2c3f9cb203bfa55c2a8') in 0,003940 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000198 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0000_Capa73.png
+  artifactKey: Guid(18f9f8ab042cbb90e9db3610cd5f919e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0000_Capa73.png using Guid(18f9f8ab042cbb90e9db3610cd5f919e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a00e4fd13755dcbe8e60f4505eaed8b0') in 0,005853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000261 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/hemi_Sheet.png
+  artifactKey: Guid(dda11c25856a1e9a3897d03334d70ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/hemi_Sheet.png using Guid(dda11c25856a1e9a3897d03334d70ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05272f92b3ed17b5523497824be47f19') in 0,003329 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000328 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0002_Capa74.png
+  artifactKey: Guid(3f6f02e5d552daad786946c247a7143e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0002_Capa74.png using Guid(3f6f02e5d552daad786946c247a7143e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cd89e37b459ba8c1f8dca0913aa064a') in 0,007805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000278 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/pureSheet.png
+  artifactKey: Guid(c179b15aef240b4eb8b9ade3f2680568) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/pureSheet.png using Guid(c179b15aef240b4eb8b9ade3f2680568) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6890cf515bb368870c15b307448ab5b') in 0,003132 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000174 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0000s_0001_Capa78.png
+  artifactKey: Guid(a51d9c0928cf2d502adc1f69e831edf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0000s_0001_Capa78.png using Guid(a51d9c0928cf2d502adc1f69e831edf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36e1d4ce2e544b87b225562e58eb44e7') in 0,007174 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000248 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyu_Sheet.png
+  artifactKey: Guid(0db8da7cb162ad3628e874b3c46e3d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyu_Sheet.png using Guid(0db8da7cb162ad3628e874b3c46e3d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca94d49cae938ba8747bf34efc2b87e1') in 0,003724 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000169 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyuAkane_Sheet.png
+  artifactKey: Guid(d2a0b8e091f13dcbf91a3ebb9a1d8318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyuAkane_Sheet.png using Guid(d2a0b8e091f13dcbf91a3ebb9a1d8318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85f6b824b4134daa191a802575536386') in 0,006646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000230 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/santos1_Sheet.png
+  artifactKey: Guid(8060d41487012e3f09043ad81f2b49c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/santos1_Sheet.png using Guid(8060d41487012e3f09043ad81f2b49c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5e161b130a2289411ba74b47b4b7662') in 0,003977 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000283 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0000_Capa76.png
+  artifactKey: Guid(ff733ef5bb888c01a81b52543af4786b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0001s_0000_Capa76.png using Guid(ff733ef5bb888c01a81b52543af4786b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a24a28d5b6e93f3f544847a155e23feb') in 0,007134 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000216 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/ghoulSheet.png
+  artifactKey: Guid(5495df450bde6bc4b9460591061484ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/ghoulSheet.png using Guid(5495df450bde6bc4b9460591061484ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec4cd0b4fec201f92f41249a704a87e3') in 0,040407 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000244 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/rennieSheet.png
+  artifactKey: Guid(88da5305a53d78c85a950fcf0f5a9ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/rennieSheet.png using Guid(88da5305a53d78c85a950fcf0f5a9ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19ebabd6bff8f2b91b4279216f2116d5') in 0,003582 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000189 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0002_Capa71.png
+  artifactKey: Guid(120925d8785dff6ee834daf3a5b173d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0002_Capa71.png using Guid(120925d8785dff6ee834daf3a5b173d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43fbdf2eceb26c2f7db6e8c5a29cdeb0') in 0,004000 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000241 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyuFinal_Sheet.png
+  artifactKey: Guid(1c974b7d9ff9bb3f88336f5564514021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyuFinal_Sheet.png using Guid(1c974b7d9ff9bb3f88336f5564514021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '495548a453499de1bebeb01abfed7b68') in 0,003424 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000094 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/raccon2_Sheet.png
+  artifactKey: Guid(e824a8ff3384b49929891a3773902c17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/raccon2_Sheet.png using Guid(e824a8ff3384b49929891a3773902c17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '874f1690353368dd2f680e8b1ac88005') in 0,008849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000134 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/pumpkinSkyan_Sheet.png
+  artifactKey: Guid(f1af4de0a6b713ac695ca9c079096bc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/pumpkinSkyan_Sheet.png using Guid(f1af4de0a6b713ac695ca9c079096bc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66d7b3820d04261e7bced152e883a8bb') in 0,003303 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000227 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/komaCojin_Sheet.png
+  artifactKey: Guid(46fd8a9a34e7698eeb5643d27426a2e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/komaCojin_Sheet.png using Guid(46fd8a9a34e7698eeb5643d27426a2e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77b47cc450673759f8c100ac3cfd46ee') in 0,007623 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0,000373 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0001_Capa72.png
+  artifactKey: Guid(9ec0caf2e9262d8f799b744e6d706d2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/darVueltas_0000s_0002s_0001_Capa72.png using Guid(9ec0caf2e9262d8f799b744e6d706d2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d9a8d00cacd4f9541dbe7c661b2f8ff') in 0,004174 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16,985275 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/hemi_Sheet.png
+  artifactKey: Guid(dda11c25856a1e9a3897d03334d70ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/hemi_Sheet.png using Guid(dda11c25856a1e9a3897d03334d70ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eaabde8ea2ade359a35289796d72ee9') in 0,023233 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 30,038795 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyu_Sheet.png
+  artifactKey: Guid(0db8da7cb162ad3628e874b3c46e3d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyu_Sheet.png using Guid(0db8da7cb162ad3628e874b3c46e3d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5290bbfed30a5db28fbc4e79ed439101') in 0,014642 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10,427556 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyuAkane_Sheet.png
+  artifactKey: Guid(d2a0b8e091f13dcbf91a3ebb9a1d8318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyuAkane_Sheet.png using Guid(d2a0b8e091f13dcbf91a3ebb9a1d8318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b57d6e2bcecdec6a8b77057429967d06') in 0,012426 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7,998027 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/kiyuFinal_Sheet.png
+  artifactKey: Guid(1c974b7d9ff9bb3f88336f5564514021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/kiyuFinal_Sheet.png using Guid(1c974b7d9ff9bb3f88336f5564514021) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c99e23cafe75931ba3ab8edc87ce40aa') in 0,008382 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8,334526 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/koma_Sheet.png
+  artifactKey: Guid(6bc1a0669d301694e811deda09f817f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/koma_Sheet.png using Guid(6bc1a0669d301694e811deda09f817f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd89652ffa1224ef6e77838080ff0aef9') in 0,012753 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6,661860 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/komaCojin_Sheet.png
+  artifactKey: Guid(46fd8a9a34e7698eeb5643d27426a2e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/komaCojin_Sheet.png using Guid(46fd8a9a34e7698eeb5643d27426a2e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a26cd44c76b3c07dc6065bb9076b3451') in 0,011106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7,482390 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/komaHidden_Sheet.png
+  artifactKey: Guid(919c691de01d9aa80ba48340a282d696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/komaHidden_Sheet.png using Guid(919c691de01d9aa80ba48340a282d696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03a298cf6522f1949fe53330432c8836') in 0,009772 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6,070667 seconds.
+  path: Assets/Animation/OriginalSheets/chapter2/pumpkinSkyan_Sheet.png
+  artifactKey: Guid(f1af4de0a6b713ac695ca9c079096bc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/OriginalSheets/chapter2/pumpkinSkyan_Sheet.png using Guid(f1af4de0a6b713ac695ca9c079096bc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e79095165a7212dbe33ab811328396fe') in 0,019131 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
