@@ -77,6 +77,7 @@ public class variable_Text : MonoBehaviour
 
     //--------
     //AKANE
+    //aceptas sin sacar botones
     public static string ganma_ThirdDay_PreAkaneMission_1="What's wrong Akane?";
     public static string akane_ThirdDay_PreMission_1="..I want to play but Santos is playing with sister";
     public static string ganma_ThirdDay_PreAkaneMission_2="I can play with you!";

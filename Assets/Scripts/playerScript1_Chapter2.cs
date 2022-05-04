@@ -13,6 +13,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	private SpriteRenderer spritePersonaje;
 
 	//animator externo
+	public Canvas fadeCanvas;
 	public Animator fadeAnimation;
 
 	//canvas, texto e imagenes
@@ -31,7 +32,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	private Canvas gameObjectBotonesMision;
 	
 	
-	int contar=0;
+	private int contar=0;
+	private int contar2=0;
 
 	//expresiones
 	public Sprite[] expresionesGanma;
@@ -85,6 +87,9 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
     void Start()
     {
+		sortingLayerPositive();
+		Invoke("sortingLayerNegative", 1f);
+
 		variablesGeneral.canMove=false;
         //pillar lo del propio objeto
         collider=GetComponent<BoxCollider2D>();
@@ -221,7 +226,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			teleportRooms();
 		}
 
-		Debug.Log(objetoTrigger.gameObject.name=="komaiHid");
 	}
 
 	void OnTriggerExit2D(Collider2D coll) {
@@ -234,9 +238,42 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 	//ocultar
 	public void hideCanvas_Ganma(){
+		Debug.Log("contar2"+contar2);
+		Debug.Log("mission done"+variablesGeneral.awamiKomaMission_Done);
+
 		if(!variablesGeneral.startDone){initialConversation();}
-		else if(contar<4 && contar!=0 && variablesGeneral.awamiKomaMission_WIP==0 && !variablesGeneral.awamiKomaMission_Done){//si has aceptado la mision, apretar saca el siguiente dialogo
+		else if(variablesGeneral.awamiKomaMission_WIP==0 && !variablesGeneral.awamiKomaMission_Done){
+			//si has aceptado la mision, apretar saca el siguiente dialogo
 			acceptAwami_KomaMission();
+		}
+		else if (!variablesGeneral.akaneMission_Done){
+			if(objetoTrigger.name=="akane_interactable_Day3"){
+				Debug.Log("here2222222");
+				
+				if(contar2<6){Mission_Akane();}
+				else if(contar2==6){
+					Invoke("sortingLayerPositive",1f);
+					fadeCanvas.sortingOrder=1;
+					//fade
+					trueFade();
+
+					//sacar el post mission
+					Invoke("PostAkaneMission",3f);
+					
+					//desfade
+					Invoke("falseFade",2f);
+
+					Invoke("sortingLayerNegative", 3f);
+				}
+				else{PostAkaneMission();}
+			}
+			else{
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				variablesGeneral.canMove=true;
+				contar=0;
+				contar2=0;
+				variablesGeneral.contador2=0;
+			}
 		}
 		else{
 			canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -254,38 +291,67 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				acceptAwami_KomaMission();
 			}
 			else if(variablesGeneral.awamiKomaMission_WIP==1 || variablesGeneral.awamiKomaMission_WIP==2){
-				Debug.Log("here");
-				//quitar canvas
-				canvasOtros.GetComponent<Canvas>().enabled=false;
+				if(objetoTrigger.name=="awamiHid" || objetoTrigger.name=="komaiHid"){
+					//quitar canvas
+					canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				//fade
-				trueFade();
-				
-
-				if(objetoTrigger.gameObject.name=="awamiHid"){
-					//quitar el personaje
+					//fade
+					trueFade();
 					
-					awamiHidden.SetBool("hidden", false);
-				}
-				if(objetoTrigger.gameObject.name=="komaiHid"){
-					//quitar el personaje
-					komaHidden.SetBool("hidden", false);
-				}
-				
-				//desfade
-				Invoke("falseFade",2f);
 
-				//si tienes los dos, teletransportas
-				Invoke("finalTP_AwamiKoma_Mission",1.5f);
+					if(objetoTrigger.gameObject.name=="awamiHid"){
+						//quitar el personaje
+						
+						awamiHidden.SetBool("hidden", false);
+					}
+					if(objetoTrigger.gameObject.name=="komaiHid"){
+						//quitar el personaje
+						komaHidden.SetBool("hidden", false);
+					}
+					
+					//desfade
+					Invoke("falseFade",2f);
+
+					//si tienes los dos, teletransportas
+					Invoke("finalTP_AwamiKoma_Mission",1.5f);
+					
+					//te puedes mover tras x segundos
+					Invoke("canMoveAgain",4f);
+				}
+				else{
+					canvasOtros.GetComponent<Canvas>().enabled=false;
+					gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
+					variablesGeneral.canMove=true;
+					contar=0;
+					contar2=0;
+					variablesGeneral.contador2=0;
+				}
 				
-				//te puedes mover tras x segundos
-				Invoke("canMoveAgain",4f);
+			}
+			else if(!variablesGeneral.akaneMission_Done && objetoTrigger!=null){
+				if(objetoTrigger.name=="akane_interactable_Day3"){
+					Debug.Log("here");
+
+					if(contar2<6){Mission_Akane();}
+					else{PostAkaneMission();}
+					
+				}
+				else{
+					canvasOtros.GetComponent<Canvas>().enabled=false;
+					gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
+					variablesGeneral.canMove=true;
+					contar=0;
+					contar2=0;
+					variablesGeneral.contador2=0;
+				}
+				
 			}
 			else{
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
 				variablesGeneral.canMove=true;
 				contar=0;
+				contar2=0;
 				variablesGeneral.contador2=0;
 			}
 		}
@@ -337,6 +403,67 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			
 	}
 
+	public void Mission_Akane(){
+		switch(contar2){
+			case 0:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[0];///change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_1;
+				contar2++;
+				break;
+
+			case 1:
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Akane";
+				imagenOtros.sprite=expresionesAkane[4];//change
+				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_1;
+				contar2++;
+				break;
+
+			case 2:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[0];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_2;
+				contar2++;
+				break;
+
+			case 3:
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Akane";
+				imagenOtros.sprite=expresionesAkane[4];//change
+				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_2;
+				contar2++;
+				break;
+
+			case 4:
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Akane";
+				imagenOtros.sprite=expresionesAkane[4];//change
+				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_3;
+				contar2++;
+				break;
+
+			case 5:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[4];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_3;
+				contar2++;
+
+				break;
+		}
+	}
 	//esto es del boton de aceptar
 	public void decideFate(){//aceptas misiones
 		if(variablesGeneral.spriteTocado=="wisp_interactable"){goSleep();}
@@ -427,6 +554,70 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		
 	}
 
+	void PostAkaneMission(){
+		switch(contar2){
+			case 6:
+				fadeCanvas.sortingOrder=-1;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Akane";
+				imagenOtros.sprite=expresionesAkane[4];//change
+				textoOtros.text=variable_Text.akane_ThirdDay_PostMission_1;
+				contar2++;
+				break;
+
+			case 7:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesAkane[4];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_1;
+				contar2++;
+				break;
+
+			case 8:
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Akane";
+				imagenOtros.sprite=expresionesAkane[4];//change
+				textoOtros.text=variable_Text.akane_ThirdDay_PostMission_2;
+				contar2++;
+				break;
+
+			case 9:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[4];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_2;
+				contar2++;
+				break;
+
+			case 10:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[4];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_3;
+				canvasColorGanma.sprite=canvasAzul;
+				contar2++;
+				break;
+
+			case 11:
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				imagenGanma.sprite=expresionesGanma[4];//change
+				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_4;
+				canvasColorGanma.sprite=canvasAzul;
+				variablesGeneral.akaneMission_Done=true;
+				break;
+		}
+	}
+
+//final extra de las misiones (aparece algo, haces tp...)
 	void finalTP_AwamiKoma_Mission(){
 		if(variablesGeneral.awamiKomaMission_WIP==2){
 			transform.position=new Vector3(finalAwamiKomaMission.position.x,finalAwamiKomaMission.position.y,0);//teleport
@@ -486,11 +677,11 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 //dia2
 		 if(variablesGeneral.spriteTocado=="awami_koma_interactable"){
 			 if(variablesGeneral.awamiKomaMission_Done){
+				 contar=0;
 				 //numero random
 					Random random=new System.Random();
 					int num_random=random.Next(0,6);
 
-					Debug.Log(num_random);
 				 if(num_random%2==0){
 					 quienHablaOtros.text="Awami";
 					 imagenOtros.sprite=expresionesAwami[3];
@@ -554,7 +745,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 if(variablesGeneral.spriteTocado=="koma_interactable_Day3"){//change
 			Debug.Log(":O");
 		 }
-		 if(variablesGeneral.spriteTocado=="akane_interactable_Day3"){Debug.Log(":)");}//change
+		 if(variablesGeneral.spriteTocado=="akane_interactable_Day3"){Mission_Akane();}//change
 		 if(variablesGeneral.spriteTocado=="awami_interactable_Day3"){
 			quienHablaOtros.text="Awami";
 			imagenOtros.sprite=expresionesAwami[6];
@@ -575,6 +766,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	void initialConversation(){
 		switch(variablesGeneral.contador){
 			case 0:
+
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
 				imagenOtros.sprite=expresionesWisp[1];
 				quienHablaOtros.text="Wisp";
 				textoOtros.text=variable_Text.wisp_FirstDay2;
@@ -626,7 +821,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				variablesGeneral.contador+=1;
 				break;
 
-
 			case 6:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -644,6 +838,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				textoGanma.text=variable_Text.ganma_FirstDay4;
 				variablesGeneral.contador+=1;
 				break;
+			
 
 			case 8:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -679,6 +874,9 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			transform.position=new Vector3(thirdDay.position.x,thirdDay.position.y,0);//teleportDays
 			variablesGeneral.sleepDay3=true;
 			//del segundo al tercero
+
+			//como puedes no hacer las misiones las tenemos que pasar a true para que no estorben en los siguientes dias
+			variablesGeneral.awamiKomaMission_Done=true;
 		}
 		else if(variablesGeneral.sleepDay2 && variablesGeneral.sleepDay3
 		&& !variablesGeneral.sleepDay4 && !variablesGeneral.sleepDay5){
@@ -699,8 +897,17 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void teleportRooms(){
-		if(objetoTrigger.name)
+		if(objetoTrigger.name=="teleportVerde_izq_Dia2"){//estas con trigger en la izq, teleportas a la derecha
+			transform.position=new Vector3(teleportDaysGreenRight_Day2.position.x,teleportDaysGreenRight_Day2.position.y,0);
+		}
+		if(objetoTrigger.name=="teleportVerde_der_Dia2"){//estas con trigger en la der, teleportas a la izq
+			transform.position=new Vector3(teleportDaysGreenLeft_Day2.position.x,teleportDaysGreenLeft_Day2.position.y,0);
+		}
 	}
 
+
+
+	void sortingLayerNegative(){fadeCanvas.sortingOrder=-1;}
+	void sortingLayerPositive(){fadeCanvas.sortingOrder=12;}
 
 }

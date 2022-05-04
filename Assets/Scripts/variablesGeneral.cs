@@ -31,6 +31,8 @@ public class variablesGeneral : MonoBehaviour
     public static int awamiKomaMission_WIP=0;
     public static bool awamiKomaMission_Done=false;
 
+    public static bool akaneMission_Done=false;
+
     public static bool racoonMission_WIP=false;
     public static bool racoonMission_Done=false;
 
