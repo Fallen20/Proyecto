@@ -28,8 +28,22 @@ public class variablesGeneral : MonoBehaviour
 
     public static bool startDone=false;
 
+    public static int awamiKomaMission_WIP=0;
+    public static bool awamiKomaMission_Done=false;
+
+    public static bool racoonMission_WIP=false;
+    public static bool racoonMission_Done=false;
+
+    public static bool ghoulMission_WIP=false;
+    public static bool ghoulMission_Done=false;
+
+    public static bool santosMission_Done=false;
+    public static bool kiyuMission_Done=false;
+
     public static int contador=0;
     public static int contador2=0;
 
+    
+    
 
 }

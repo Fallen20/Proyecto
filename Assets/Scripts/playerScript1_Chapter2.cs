@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
+
 
 public class playerScript1_Chapter2 : MonoBehaviour
 {
@@ -15,15 +17,19 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 	//canvas, texto e imagenes
 	private Canvas canvasGanma;
-	private Image canvasColorGanma;
 	private Text textoGanma;
 	private Image imagenGanma;
+
+	private Image canvasColorGanma;
+	public Sprite canvasNaranja;
+	public Sprite canvasAzul;
 
 	private Canvas canvasOtros;
 	private Text textoOtros;
 	private Text quienHablaOtros;
 	private Image imagenOtros;
 	private Canvas gameObjectBotonesMision;
+	
 	
 	int contar=0;
 
@@ -63,6 +69,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	private Transform teleportDaysYellowBottom_Day3;
 	private Transform teleportDaysYellowTop_Day3;
 
+	private Transform finalAwamiKomaMission;
+
+
+
+	public GameObject komaAwami_Mission_Object;
+	public Animator awamiHidden;
+	public Animator komaHidden;
+	
 
 	//variables a usar
     private GameObject objetoTrigger;
@@ -92,7 +106,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 		//teleportDayss
 
-		//salas
+		//al cargar la sala lo hacen aqui
 		teleportDaysGreenLeft_Day2=GameObject.FindWithTag("teleportGreenLeft_Day2").GetComponent<Transform>();
 		teleportDaysGreenRight_Day2=GameObject.FindWithTag("teleportGreenRight_Day2").GetComponent<Transform>();
 
@@ -110,10 +124,12 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	 	forthDay=GameObject.FindWithTag("forthDay").GetComponent<Transform>();
 		fifthDay=GameObject.FindWithTag("fifthDay").GetComponent<Transform>();
 
+		finalAwamiKomaMission=GameObject.FindWithTag("finalAwamiKomaMission").GetComponent<Transform>();
+		
+
 		// ocultar canvas inecesarios
 		canvasGanma.GetComponent<Canvas>().enabled=false;
 		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
-
 
 		canvasOtros.GetComponent<Canvas>().enabled=true;
 		imagenOtros.sprite=expresionesWisp[0];
@@ -197,7 +213,15 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 //---------------
 	void OnTriggerEnter2D(Collider2D coll) {
+		Debug.Log(coll.gameObject.name);
 		objetoTrigger=coll.gameObject;
+
+		if(objetoTrigger.name=="teleportVerde_izq_Dia2" || objetoTrigger.name=="teleportVerde_der_Dia2"){
+			//add more
+			teleportRooms();
+		}
+
+		Debug.Log(objetoTrigger.gameObject.name=="komaiHid");
 	}
 
 	void OnTriggerExit2D(Collider2D coll) {
@@ -211,35 +235,72 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	//ocultar
 	public void hideCanvas_Ganma(){
 		if(!variablesGeneral.startDone){initialConversation();}
-		else if(contar<4 && contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
+		else if(contar<4 && contar!=0 && variablesGeneral.awamiKomaMission_WIP==0 && !variablesGeneral.awamiKomaMission_Done){//si has aceptado la mision, apretar saca el siguiente dialogo
 			acceptAwami_KomaMission();
 		}
-		else{canvasGanma.GetComponent<Canvas>().enabled=false;}
+		else{
+			canvasGanma.GetComponent<Canvas>().enabled=false;
+			variablesGeneral.canMove=true;
+		}
 		
 	}
 
 	public void hideCanvas_Otros(){
 		
 		if(!variablesGeneral.startDone){initialConversation();}
-		else if(variablesGeneral.contador2==1){Mission_Koma_Awami();}
-		else if(contar<4 && contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
-			acceptAwami_KomaMission();
+		else{		
+			if(variablesGeneral.contador2==1){Mission_Koma_Awami();}
+			else if(contar<4 && contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
+				acceptAwami_KomaMission();
+			}
+			else if(variablesGeneral.awamiKomaMission_WIP==1 || variablesGeneral.awamiKomaMission_WIP==2){
+				Debug.Log("here");
+				//quitar canvas
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+
+				//fade
+				trueFade();
+				
+
+				if(objetoTrigger.gameObject.name=="awamiHid"){
+					//quitar el personaje
+					
+					awamiHidden.SetBool("hidden", false);
+				}
+				if(objetoTrigger.gameObject.name=="komaiHid"){
+					//quitar el personaje
+					komaHidden.SetBool("hidden", false);
+				}
+				
+				//desfade
+				Invoke("falseFade",2f);
+
+				//si tienes los dos, teletransportas
+				Invoke("finalTP_AwamiKoma_Mission",1.5f);
+				
+				//te puedes mover tras x segundos
+				Invoke("canMoveAgain",4f);
+			}
+			else{
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
+				variablesGeneral.canMove=true;
+				contar=0;
+				variablesGeneral.contador2=0;
+			}
 		}
-		else{
-			canvasOtros.GetComponent<Canvas>().enabled=false;
-			gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
-			variablesGeneral.canMove=true;
-			contar=0;
-			variablesGeneral.contador2=0;
-		}
+		
 	}
 
+//---------------
 	void trueFade(){
 		fadeAnimation.SetBool("fade", true);
 	}
 	void falseFade(){
 		fadeAnimation.SetBool("fade", false);
 	}
+
+	void canMoveAgain(){variablesGeneral.canMove=true;}
 
 //---------
 
@@ -339,12 +400,25 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					break;
 				
 				case 3:
-					Debug.Log("acepto mision");
 					//fade
+					trueFade();
 					//quita los canvas
+					canvasGanma.GetComponent<Canvas>().enabled=false;
+					canvasOtros.GetComponent<Canvas>().enabled=false;
+
 					//pon los personajes en el otro sitio
+					komaHidden.SetBool("hidden", true);
+					awamiHidden.SetBool("hidden", true);
+
 					//oculta el original
+					komaAwami_Mission_Object.SetActive(false);
+
 					//desfade
+					Invoke("falseFade", 1f);
+
+					//te puedes mover
+					variablesGeneral.canMove=true;
+					contar+=1;
 					break;
 			}
 		
@@ -353,10 +427,15 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		
 	}
 
-	
-
-
-	
+	void finalTP_AwamiKoma_Mission(){
+		if(variablesGeneral.awamiKomaMission_WIP==2){
+			transform.position=new Vector3(finalAwamiKomaMission.position.x,finalAwamiKomaMission.position.y,0);//teleport
+			komaAwami_Mission_Object.SetActive(true);
+			variablesGeneral.awamiKomaMission_Done=true;
+			variablesGeneral.awamiKomaMission_WIP+=1;
+		}
+		else{return;}
+	}
 
 //----------------
 	public void interactable(){
@@ -370,43 +449,120 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void decideText(string spriteTocado){//esto SOLO saca texto
+		canvasColorGanma.sprite=canvasNaranja;
+
 		 if(variablesGeneral.spriteTocado=="wisp_interactable"){
 			 goSleep_Question();
 		 }
 		 if(variablesGeneral.spriteTocado=="bed_interactable"){endChapter();}
 
-		 if(variablesGeneral.spriteTocado=="kiyu_interactable"){
+		//dia 1
+		 if(variablesGeneral.spriteTocado=="kiyu_interactable_Day1"){
 			 quienHablaOtros.text="Kiyu";
 			 imagenOtros.sprite=expresionesKiyu[1];
 			 textoOtros.text=variable_Text.kiyu_FirstDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
-		 if(variablesGeneral.spriteTocado=="akane_interactable"){
+		 if(variablesGeneral.spriteTocado=="akane_interactable_Day1"){
 			 quienHablaOtros.text="Akane";
 			 imagenOtros.sprite=expresionesAkane[0];
 			 textoOtros.text=variable_Text.akane_FirstDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
-		 if(variablesGeneral.spriteTocado=="koma_interactable"){
+		 if(variablesGeneral.spriteTocado=="koma_interactable_Day1"){
 			 quienHablaOtros.text="Koma";
 			 imagenOtros.sprite=expresionesKoma[0];
 			 textoOtros.text=variable_Text.koma_FirstDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
-		 if(variablesGeneral.spriteTocado=="awami_interactable"){
+		 if(variablesGeneral.spriteTocado=="awami_interactable_Day1"){
 			 quienHablaOtros.text="Awami";
 			 imagenOtros.sprite=expresionesAwami[0];
 			 textoOtros.text=variable_Text.awami_FirstDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
+
+//------------------
+		 //dia2
 		 if(variablesGeneral.spriteTocado=="awami_koma_interactable"){
-			  Mission_Koma_Awami();
+			 if(variablesGeneral.awamiKomaMission_Done){
+				 //numero random
+					Random random=new System.Random();
+					int num_random=random.Next(0,6);
+
+					Debug.Log(num_random);
+				 if(num_random%2==0){
+					 quienHablaOtros.text="Awami";
+					 imagenOtros.sprite=expresionesAwami[3];
+			 		 textoOtros.text=variable_Text.awami_SecondDay_PostMission_Interaction;
+			 		 canvasOtros.GetComponent<Canvas>().enabled=true;
+				 }
+				 else{
+					  quienHablaOtros.text="Koma";
+					 imagenOtros.sprite=expresionesKoma[3];
+			 		 textoOtros.text=variable_Text.koma_SecondDay_PostMission_Interaction;
+			 		 canvasOtros.GetComponent<Canvas>().enabled=true;
+				 }
+				 
+			 }
+			 else{Mission_Koma_Awami();}
+			  
 		 }
 		 if(variablesGeneral.spriteTocado=="kiyu_Akane_interactable"){
 			 quienHablaOtros.text="Kiyu";
 			 imagenOtros.sprite=expresionesKiyu[7];
 			 textoOtros.text=variable_Text.kiyu_SecondDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
+		 }
+
+		 if(variablesGeneral.spriteTocado=="awamiHid"){
+			 if(variablesGeneral.awamiKomaMission_WIP>=0 && !variablesGeneral.awamiKomaMission_Done){
+				 quienHablaOtros.text="Awami";
+			 	imagenOtros.sprite=expresionesAwami[2];
+			 	textoOtros.text=variable_Text.awami_SecondDay_Mission;
+			 	canvasOtros.GetComponent<Canvas>().enabled=true;
+			 	variablesGeneral.awamiKomaMission_WIP+=1;
+			 }
+			 else{variablesGeneral.canMove=true;}
+		 }
+		 if(variablesGeneral.spriteTocado=="komaiHid"){
+			 
+			 if(variablesGeneral.awamiKomaMission_WIP>=0 && !variablesGeneral.awamiKomaMission_Done){
+				 quienHablaOtros.text="Koma";
+			 	imagenOtros.sprite=expresionesKoma[2];
+			 	textoOtros.text=variable_Text.koma_SecondDay_Mission;
+			 	canvasOtros.GetComponent<Canvas>().enabled=true;
+			 	variablesGeneral.awamiKomaMission_WIP+=1;
+			 }
+			  else{variablesGeneral.canMove=true;}
+		 }
+
+//------------------
+		//dia3
+		 if(variablesGeneral.spriteTocado=="kiyu_interactable_Day3"){
+			imagenGanma.sprite=expresionesGanma[27];
+			textoGanma.text=variable_Text.kiyu_ThirdDay;
+			canvasGanma.GetComponent<Canvas>().enabled=true;
+			canvasColorGanma.sprite=canvasAzul;
+		 }
+		 if(variablesGeneral.spriteTocado=="santos_interactable_Day3"){
+			quienHablaOtros.text="Santos";
+			imagenOtros.sprite=expresionesSantos[4];
+			textoOtros.text=variable_Text.santos_ThirdDay;
+			canvasOtros.GetComponent<Canvas>().enabled=true;
+		 }
+		 if(variablesGeneral.spriteTocado=="koma_interactable_Day3"){//change
+			Debug.Log(":O");
+		 }
+		 if(variablesGeneral.spriteTocado=="akane_interactable_Day3"){Debug.Log(":)");}//change
+		 if(variablesGeneral.spriteTocado=="awami_interactable_Day3"){
+			quienHablaOtros.text="Awami";
+			imagenOtros.sprite=expresionesAwami[6];
+			textoOtros.text=variable_Text.awami_ThirdDay;
+			canvasOtros.GetComponent<Canvas>().enabled=true;
+		 }
+		 if(variablesGeneral.spriteTocado=="racoon_interactable_Day3"){//change
+		 	Debug.Log(">:(");
 		 }
 
 	}
@@ -541,4 +697,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			//del cquinto a la escena
 		}
 	}
+
+	void teleportRooms(){
+		if(objetoTrigger.name)
+	}
+
+
 }

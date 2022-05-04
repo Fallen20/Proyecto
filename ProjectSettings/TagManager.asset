@@ -38,6 +38,9 @@ TagManager:
   - forthDay
   - fifthDay
   - gameObjectBotonesMision
+  - hiddenPlace_koma
+  - hiddenPlace_awami
+  - finalAwamiKomaMission
   layers:
   - Default
   - TransparentFX

@@ -50,7 +50,7 @@ public class variable_Text : MonoBehaviour
 
     
     public static string koma_SecondDay_Mission="You found me!";
-    public static string awami_SecondDay_Mission="I'm a box!";
+    public static string awami_SecondDay_Mission="I'm a box, not Awami!";
 
     //triggerea uno de estos a lo random tras acabar
     public static string koma_SecondDay_PostMission_Interaction="Let's play again tomorrow!";
