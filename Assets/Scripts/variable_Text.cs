@@ -98,7 +98,7 @@ public class variable_Text : MonoBehaviour
     //--------
     //RACOON
     public static string racoon_ThirdDay_PreMission_1="Ganma dear, right in time. Can you help me?";
-    public static string racoon_ThirdDay_PreMission_2="Thanks. I need something long. Do you know anything?";
+    public static string racoon_ThirdDay_PreMission_2="Thanks. I need something long. Do you know anything?";//aceptas
     public static string ganma_ThirdDay_PreRacoonMission="I think a bone will do it...";//pensar
 
     public static string ganma_ThirdDay_RacoonMission_1="Perfect! I'll bring back to Racoon";
@@ -196,6 +196,9 @@ public class variable_Text : MonoBehaviour
 
 
     //segun cual le des, reacciona de una manera. Pero solo le puedes dar una
+     public static string giveFeater="What feather should I give to them?";//piensa
+    
+    //según cual le des, sale una u otra
     public static string ghoul_ForthDay_Mission_Pumpkin="Rough touch, but soft if you touch it slowly.";
     public static string ghoul_ForthDay_Mission_Kiyu="Is really soft. Smells very nice.";
     public static string ghoul_ForthDay_Mission_Whiskers="Seems it comes from a bouncy bird. I like the energy";

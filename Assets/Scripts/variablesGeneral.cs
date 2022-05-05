@@ -33,8 +33,11 @@ public class variablesGeneral : MonoBehaviour
 
     public static bool akaneMission_Done=false;
 
+    public static bool talkedToRacoon=false;
     public static bool racoonMission_WIP=false;
     public static bool racoonMission_Done=false;
+
+    public static bool rennieAppeared=false;
 
     public static bool ghoulMission_WIP=false;
     public static bool ghoulMission_Done=false;
@@ -44,7 +47,9 @@ public class variablesGeneral : MonoBehaviour
 
     public static int contador=0;
     public static int contador2=0;
+    public static int num_random=0;
 
+    public static bool jumpscareShown=false;
     
     
 
