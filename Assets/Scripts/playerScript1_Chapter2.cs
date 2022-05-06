@@ -336,7 +336,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			else if(contar<4 && contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
 				acceptAwami_KomaMission();
 			}
-			else if(variablesGeneral.awamiKomaMission_WIP==1 || variablesGeneral.awamiKomaMission_WIP==2){
+			else if(variablesGeneral.awamiKomaMission_WIP==1 || variablesGeneral.awamiKomaMission_WIP==2 && !variablesGeneral.awamiKomaMission_Done){
 				if(objetoTrigger.name=="awamiHid" || objetoTrigger.name=="komaiHid"){
 					//quitar canvas
 					canvasOtros.GetComponent<Canvas>().enabled=false;
@@ -402,6 +402,32 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					//sacas el fin de la mision
 					Invoke("endMissionSantos", 1.7f);
 				}
+				else if(objetoTrigger.name=="kiyu_interactable_Day4" && !variablesGeneral.kiyuMission_Done){
+					
+					if(contarKiyu<2){preMission_Kiyu();}
+					else if(contarKiyu==3){//has apretado a aceptar
+						//fade
+						trueFade();
+						sortingLayerPositive();
+
+						//desfade
+						Invoke("falseFade", 0.9f);
+
+						//bajar capa
+						Invoke("sortingLayerNegative", 2f);
+						
+						//sacas el fin de la mision
+						contarKiyu++;
+						Debug.Log("antes dl invoke >> "+contarKiyu);
+
+						Invoke("postMissionKiyu", 1.7f);
+
+						
+					}
+					else if(contarKiyu>=4){postMissionKiyu();}
+					else{closeCanvasOtros();}
+				}
+
 				else{closeCanvasOtros();}
 				
 			}
@@ -414,6 +440,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void closeCanvasOtros(){
+		
 		canvasOtros.GetComponent<Canvas>().enabled=false;
 		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
 		variablesGeneral.canMove=true;
@@ -422,6 +449,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		contar2=0;
 		variablesGeneral.contador2=0;
 		contarSantos=0;
+		contarKiyu=0;
 
 		if(variablesGeneral.talkedToRacoon){contar4=2;}		
 		
@@ -768,7 +796,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
 				quienHablaOtros.text="Santos";
-				imagenOtros.sprite=expresionesSantos[4];//change
+				imagenOtros.sprite=expresionesSantos[1];
 				textoOtros.text=variable_Text.santos_ForthDay_PreMission_1;
 				contarSantos++;
 				break;
@@ -778,11 +806,38 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
 				quienHablaOtros.text="Santos";
-				imagenOtros.sprite=expresionesSantos[4];//change
+				imagenOtros.sprite=expresionesSantos[2];
 				textoOtros.text=variable_Text.santos_ForthDay_PreMission_2;
 				contarSantos++;
 				break;
 		}
+	}
+
+	public void preMission_Kiyu(){
+		switch(contarKiyu){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[6];
+				textoOtros.text=variable_Text.kiyu_ForthDay_PreMission_1;
+				contarKiyu++;
+				break;
+
+			case 1:
+				gameObjectBotonesMision.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[7];
+				textoOtros.text=variable_Text.kiyu_ForthDay_PreMission_2;
+				contarKiyu++;
+				break;
+		}
+	}
+
+	public void preMission_Ghoul(){
+		
 	}
 	
 
@@ -796,6 +851,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			acceptRacoonMission();
 		}
 		if(variablesGeneral.spriteTocado=="santos_interactable_Day4"){acceptSantosMission();}
+		if(variablesGeneral.spriteTocado=="kiyu_interactable_Day4"){acceptKiyuMission();}
+
 		else{
 			variablesGeneral.contador2=0;
 			contar=0;
@@ -929,9 +986,20 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		canvasOtros.GetComponent<Canvas>().enabled=true;
 
 		quienHablaOtros.text="Santos";
-		imagenOtros.sprite=expresionesSantos[0];//change
+		imagenOtros.sprite=expresionesSantos[3];
 		textoOtros.text=variable_Text.santos_ForthDay_PreMission_3;
 		variablesGeneral.santosMission_WIP=true;
+	}
+
+	void acceptKiyuMission(){
+		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
+
+		canvasOtros.GetComponent<Canvas>().enabled=true;
+
+		quienHablaOtros.text="Kiyu";
+		imagenOtros.sprite=expresionesKiyu[2];
+		textoOtros.text=variable_Text.kiyu_ForthDay_Mission_3;
+		contarKiyu++;
 	}
 	
 
@@ -1013,10 +1081,37 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		canvasOtros.GetComponent<Canvas>().enabled=true;
 
 		quienHablaOtros.text="Santos";
-		imagenOtros.sprite=expresionesSantos[0];//change
+		imagenOtros.sprite=expresionesSantos[0];
 		textoOtros.text=variable_Text.santos_ForthDay_PostMission_4;
 	}
 
+	void postMissionKiyu(){
+		Debug.Log("en el postmission >> "+contarKiyu);
+
+		switch(contarKiyu){
+			case 4:
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[4];
+				textoOtros.text=variable_Text.kiyu_ForthDay_PostMission_4;
+				contarKiyu++;
+				break;
+
+			case 5:
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[7];
+				textoGanma.text=variable_Text.ganma_ForthDay_PostMission_Kiyu;
+				variablesGeneral.kiyuMission_Done=true;
+				contarKiyu++;
+				break;
+		}
+		
+		
+	}
 //----------------
 	public void interactable(){
 		variablesGeneral.canMove=false;
@@ -1358,6 +1453,35 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		if(objetoTrigger.name=="santos_interactable_Day4"){
 			if(variablesGeneral.santosMission_Done){endMissionSantos();}
 			else{preMission_Santos();}
+		}
+
+		if(objetoTrigger.name=="kiyu_interactable_Day4"){
+			//mision
+			if(variablesGeneral.kiyuMission_Done){
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[1];//change
+				textoOtros.text=variable_Text.kiyu_ForthDay_PostMission_PostInteract;
+			}//ya has hecho la mision
+			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.kiyuFeatherPicked){
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[1];//change
+				textoOtros.text=variable_Text.kiyu_ForthDay_Mission_Ghoul;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				variablesGeneral.kiyuFeatherPicked=true;
+			}
+			else if(variablesGeneral.ghoulMission_WIP && variablesGeneral.kiyuFeatherPicked){
+				imagenGanma.sprite=expresionesGanma[25];
+				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+			}
+			else{preMission_Kiyu();}
+
+			//post mision
+			//ghoul
+			
+
 		}
 //------------------
 		//dia5
