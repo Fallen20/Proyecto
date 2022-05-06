@@ -168,7 +168,7 @@ public class variable_Text : MonoBehaviour
     //SANTOS
     public static string santos_ForthDay_PreMission_1="Ganma my boy!";
     public static string santos_ForthDay_PreMission_2="Do you want to play or something?";
-    public static string santos_ForthDay_PreMission_3="The kids made a new game! I'm sure you'll love it";
+    public static string santos_ForthDay_PreMission_3="The kids made a new game! I'm sure you'll love it";//accept
 
     //al volver a interactuar
     public static string santos_ForthDay_PostMission_4="Fun, wasn't it? We'll play as many times you want";

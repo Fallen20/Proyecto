@@ -93,7 +93,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	public GameObject[] gameObjectRacoonMission;
 	private bool correctBonePicked;
 
-	public GameObject rennieObjeto;	
+	public Animator rennieObjeto;	
 
 	//variables a usar
     private GameObject objetoTrigger;
@@ -103,8 +103,12 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	private int contar3=0;
 	private int contar4=0;
 	private int contarRennie=0;
-	
-
+	private int contarWhiskers=0;
+	private int contarHemi=0;
+	private int contarPumpkin=0;
+	private int contarRacoon=0;
+	private int contarSantos=0;
+	private int contarKiyu=0;
 
     void Start()
     {
@@ -153,8 +157,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 		finalAwamiKomaMission=GameObject.FindWithTag("finalAwamiKomaMission").GetComponent<Transform>();
 		
-
-		rennieObjeto.SetActive(false);
 
 		// ocultar canvas inecesarios
 		canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -256,10 +258,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 
 		if(objetoTrigger.name=="rennie_interactable_Day4" && !variablesGeneral.rennieAppeared){
+			
 			rennieApperance();
-		}
-		if(contarRennie==2){
-				rennieObjeto.SetActive(true);
 		}
 	}
 
@@ -307,14 +307,20 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				contar=0;
 				contar2=0;
 				variablesGeneral.contador2=0;
+				contarRennie=0;
 			}
 		}
 		else if(contarRennie!=0 && contarRennie<2){
-			rennieApperance();
+			if(!variablesGeneral.rennieAppeared){rennieApperance();}
 		}
+		else if(!variablesGeneral.talkedToPumpkin && contarPumpkin!=0){conversacionPumpkin();}
 		else{
 			canvasGanma.GetComponent<Canvas>().enabled=false;
 			variablesGeneral.canMove=true;
+			contarRennie=0;
+			contarHemi=0;
+			contarWhiskers=0;
+			contarRacoon=0;
 		}
 		
 	}
@@ -358,14 +364,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					//te puedes mover tras x segundos
 					Invoke("canMoveAgain",4f);
 				}
-				else{
-					canvasOtros.GetComponent<Canvas>().enabled=false;
-					gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
-					variablesGeneral.canMove=true;
-					contar=0;
-					contar2=0;
-					variablesGeneral.contador2=0;
-				}
+				else{closeCanvasOtros();}
 				
 			}
 			else if(objetoTrigger!=null){
@@ -381,6 +380,27 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					if(contar4==1){Racoon_Initial_Conversation();}
 					else if(contar4>=4){acceptRacoonMission();}
 					else{closeCanvasOtros();}
+				}
+				else if(objetoTrigger.name=="rennie_interactable_Day4"){conversacionRennie();}
+				else if(objetoTrigger.name=="whiskers_interactable_Day4" && !variablesGeneral.ghoulMission_WIP && contarWhiskers!=0){conversacionWhiskers();}//sin mision funciona
+				else if(objetoTrigger.name=="hemi_interactable_Day4" && !variablesGeneral.ghoulMission_WIP){conversacionHemi();}
+				else if(objetoTrigger.name=="pumpkin_interactable_Day4" && !variablesGeneral.talkedToPumpkin && (contarPumpkin!=0 && contarPumpkin<2)){conversacionPumpkin();}
+				else if(objetoTrigger.name=="racoon_interactable_Day4" && contarRacoon!=0){conversacionRacoon_Day4();}
+				else if(objetoTrigger.name=="santos_interactable_Day4" && (contarSantos!=0 && contarSantos<=1) && !variablesGeneral.santosMission_Done){preMission_Santos();}
+				else if(objetoTrigger.name=="santos_interactable_Day4" && variablesGeneral.santosMission_WIP && !variablesGeneral.santosMission_Done){
+					variablesGeneral.santosMission_Done=true;
+					//fade
+					trueFade();
+					sortingLayerPositive();
+
+					//desfade
+					Invoke("falseFade", 0.9f);
+
+					//bajar capa
+					Invoke("sortingLayerNegative", 2f);
+					
+					//sacas el fin de la mision
+					Invoke("endMissionSantos", 1.7f);
 				}
 				else{closeCanvasOtros();}
 				
@@ -400,9 +420,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 		contar=0;
 		contar2=0;
-		if(variablesGeneral.talkedToRacoon){contar4=2;}
-
 		variablesGeneral.contador2=0;
+		contarSantos=0;
+
+		if(variablesGeneral.talkedToRacoon){contar4=2;}		
 		
 	}
 
@@ -431,7 +452,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					canvasGanma.GetComponent<Canvas>().enabled=true;
 					canvasOtros.GetComponent<Canvas>().enabled=false;
 
-					imagenGanma.sprite=expresionesGanma[0];//change
+					imagenGanma.sprite=expresionesGanma[12];
 					textoGanma.text=variable_Text.ganma_ForthDay_Rennie_1;
 					contarRennie++;
 				break;
@@ -440,14 +461,164 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[0];//change
+				imagenGanma.sprite=expresionesGanma[13];
 				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_2;
-				contarRennie++;
 				variablesGeneral.rennieAppeared=true;
+				rennieObjeto.SetBool("found",true);
+				contarRennie++;
 				
 				break;
 		}
 	}
+
+	void conversacionRennie (){
+		switch(contarRennie){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Rennie";
+				imagenOtros.sprite=expresionesRennie[0];
+				textoOtros.text=variable_Text.rennie_ForthDay_1;
+				contarRennie++;
+				
+				break;
+				
+			case 1:
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[14];
+				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_3;
+				canvasColorGanma.sprite=canvasAzul;
+				contarRennie++;
+				break;
+
+		}
+	}
+	
+	void conversacionWhiskers(){
+		switch(contarWhiskers){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Whiskers";
+				imagenOtros.sprite=expresionesWhiskers[0];
+				textoOtros.text=variable_Text.whiskers_ForthDay_1;
+				contarWhiskers++;
+				break;
+				
+			case 1:
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[15];
+				textoGanma.text=variable_Text.ganma_ForthDay_Whiskers;
+				contarWhiskers++;
+				break;
+
+		}
+	}
+
+	void conversacionHemi(){
+		switch(contarHemi){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Hemi";
+				imagenOtros.sprite=expresionesHemi[0];
+				textoOtros.text=variable_Text.hemi_ForthDay_1;
+				contarHemi++;
+				
+				break;
+
+			case 1:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Hemi";
+				imagenOtros.sprite=expresionesHemi[1];
+				textoOtros.text=variable_Text.hemi_ForthDay_2;
+				contarHemi++;
+				
+				break;
+				
+			case 2:
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[4];
+				textoGanma.text=variable_Text.ganma_ForthDay_Hemi;
+				canvasColorGanma.sprite=canvasAzul;
+				break;
+
+		}
+	}
+
+	void conversacionPumpkin (){
+		switch(contarPumpkin){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Pumpkin";
+				imagenOtros.sprite=expresionesPumpkin[0];
+				textoOtros.text=variable_Text.pumpkin_ForthDay_1;
+				contarPumpkin++;
+				
+				break;
+
+			case 1:
+				
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[10];
+				textoGanma.text=variable_Text.ganma_ForthDay_Pumpkin;
+				contarPumpkin++;
+				
+				break;
+				
+			case 2:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Pumpkin";
+				imagenOtros.sprite=expresionesPumpkin[1];
+				textoOtros.text=variable_Text.pumpkin_ForthDay_2;
+				variablesGeneral.talkedToPumpkin=true;
+				contarPumpkin++;
+				break;
+
+		}
+	}
+
+	void conversacionRacoon_Day4 (){
+		switch(contarRacoon){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				canvasGanma.GetComponent<Canvas>().enabled=false;
+
+				quienHablaOtros.text="Racoon";
+				imagenOtros.sprite=expresionesRacoon[1];
+				textoOtros.text=variable_Text.racoon_ForthDay;
+				contarRacoon++;
+				break;
+				
+			case 1:
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+
+				imagenGanma.sprite=expresionesGanma[11];
+				textoGanma.text=variable_Text.ganma_ForthDay_Racoon;
+				contarRacoon++;
+				break;
+
+		}
+	}
+	
 	public void goSleep_Question(){
 		
 		//cambias cosas
@@ -591,6 +762,28 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 	}
 
+	public void preMission_Santos(){
+		switch(contarSantos){
+			case 0:
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Santos";
+				imagenOtros.sprite=expresionesSantos[4];//change
+				textoOtros.text=variable_Text.santos_ForthDay_PreMission_1;
+				contarSantos++;
+				break;
+
+			case 1:
+				gameObjectBotonesMision.GetComponent<Canvas>().enabled=true;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Santos";
+				imagenOtros.sprite=expresionesSantos[4];//change
+				textoOtros.text=variable_Text.santos_ForthDay_PreMission_2;
+				contarSantos++;
+				break;
+		}
+	}
 	
 
 	//esto es del boton de aceptar
@@ -602,6 +795,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			variablesGeneral.racoonMission_WIP=true;
 			acceptRacoonMission();
 		}
+		if(variablesGeneral.spriteTocado=="santos_interactable_Day4"){acceptSantosMission();}
 		else{
 			variablesGeneral.contador2=0;
 			contar=0;
@@ -613,8 +807,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	//aceptas
 	public void goSleep(){//hacer la accion
 		//fade
-		fadeAnimation.SetBool("fade", true);
-
+		trueFade();
 		//tras un segundo
 		Invoke("falseFade",1f);
 
@@ -730,6 +923,16 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 	}
 
+	void acceptSantosMission(){
+		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
+
+		canvasOtros.GetComponent<Canvas>().enabled=true;
+
+		quienHablaOtros.text="Santos";
+		imagenOtros.sprite=expresionesSantos[0];//change
+		textoOtros.text=variable_Text.santos_ForthDay_PreMission_3;
+		variablesGeneral.santosMission_WIP=true;
+	}
 	
 
 //final extra de las misiones (aparece algo, haces tp...)
@@ -806,6 +1009,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 	}
 
+	void endMissionSantos(){
+		canvasOtros.GetComponent<Canvas>().enabled=true;
+
+		quienHablaOtros.text="Santos";
+		imagenOtros.sprite=expresionesSantos[0];//change
+		textoOtros.text=variable_Text.santos_ForthDay_PostMission_4;
+	}
+
 //----------------
 	public void interactable(){
 		variablesGeneral.canMove=false;
@@ -854,9 +1065,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	void decideText(){//esto SOLO saca texto
 		canvasColorGanma.sprite=canvasNaranja;
 
-		 if(variablesGeneral.spriteTocado=="wisp_interactable"){
-			 goSleep_Question();
-		 }
+		 if(variablesGeneral.spriteTocado=="wisp_interactable"){goSleep_Question();}
 		 if(variablesGeneral.spriteTocado=="bed_interactable"){endChapter();}
 
 		//dia 1
@@ -1075,13 +1284,84 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 		if(variablesGeneral.spriteTocado=="skyan_interactable_Day4"){
 			quienHablaOtros.text="Skyan";
-			imagenOtros.sprite=expresionesSkyan[1];
+			imagenOtros.sprite=expresionesSkyan[0];
 			textoOtros.text=variable_Text.skyan_ForthDay_Interaction;
 			canvasOtros.GetComponent<Canvas>().enabled=true;
 		}
+
+		if(variablesGeneral.spriteTocado=="rennie_interactable_Day4"){conversacionRennie();}
+		if(objetoTrigger.name=="whiskers_interactable_Day4"){
+
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.whiskersFeatherPicked){//to test
+			//mision, no pillaste pluma
+				quienHablaOtros.text="Whiskers";
+				imagenOtros.sprite=expresionesWhiskers[1];
+				textoOtros.text=variable_Text.whiskers_ForthDay_Mission_Ghoul;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				variablesGeneral.whiskersFeatherPicked=true;
+			}
+			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.whiskersFeatherPicked){//to test
+			//mision, pillaste pluma y sigues en la mision
+				imagenGanma.sprite=expresionesGanma[25];
+				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+			}
+			else{conversacionWhiskers();}//no mision, hablas normal
+			
+		}
+		if(variablesGeneral.spriteTocado=="hemi_interactable_Day4"){
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){//to test
+			//mision sin acabar
+				imagenGanma.sprite=expresionesGanma[4];
+				textoGanma.text=variable_Text.hemi_ForthDay_Mission_Ghoul;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+			}
+			else{conversacionHemi();}//no mision, hablas normal
+			 
+		}
+
+		if(objetoTrigger.name=="pumpkin_interactable_Day4"){
+			
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.pumpkinFeatherPicked){//to test
+			//mision, no pillaste pluma
+				quienHablaOtros.text="Pumpkin";
+				imagenOtros.sprite=expresionesPumpkin[3];
+				textoOtros.text=variable_Text.pumpkin_ForthDay_Mission_Ghoul;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+				variablesGeneral.pumpkinFeatherPicked=true;
+			}
+			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.pumpkinFeatherPicked){//to test
+				//mision, pillaste pluma y sigues en la mision
+				imagenGanma.sprite=expresionesGanma[25];
+				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
+			}
+			else if(variablesGeneral.talkedToPumpkin){//ya has hablado una vez
+				quienHablaOtros.text="Pumpkin";
+				imagenOtros.sprite=expresionesPumpkin[2];
+				textoOtros.text=variable_Text.pumpkin_ForthDay_Interaction;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+			}
+			else{conversacionPumpkin();}//hablas por primera vez	
+		}
+
+		if(objetoTrigger.name=="racoon_interactable_Day4"){
+			if(variablesGeneral.ghoulMission_WIP){
+				quienHablaOtros.text="Racoon";
+				imagenOtros.sprite=expresionesRacoon[1];
+				textoOtros.text=variable_Text.racoon_ForthDay_Mission_Ghoul;
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+			}
+			else{conversacionRacoon_Day4();}
+		}
+
+		if(objetoTrigger.name=="santos_interactable_Day4"){
+			if(variablesGeneral.santosMission_Done){endMissionSantos();}
+			else{preMission_Santos();}
+		}
 //------------------
 		//dia5
-		if(variablesGeneral.spriteTocado=="kiyu_interactable_Day5"){
+		if(variablesGeneral.spriteTocado=="kiyu_interactable_Day5"){//to test
 			quienHablaOtros.text="Kiyu";
 			imagenOtros.sprite=expresionesKiyu[0];
 			textoOtros.text=variable_Text.kiyu_FifthDay;
@@ -1192,7 +1472,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				break;
 		}
 	}
-
 
 	void teleportDays(){
 		if(!variablesGeneral.sleepDay2 && !variablesGeneral.sleepDay3

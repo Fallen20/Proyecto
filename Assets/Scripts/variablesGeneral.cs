@@ -37,12 +37,16 @@ public class variablesGeneral : MonoBehaviour
     public static bool racoonMission_WIP=false;
     public static bool racoonMission_Done=false;
 
-    public static bool rennieAppeared=false;
-
     public static bool ghoulMission_WIP=false;
     public static bool ghoulMission_Done=false;
 
+    public static bool pumpkinFeatherPicked=false;
+    public static bool kiyuFeatherPicked=false;
+    public static bool whiskersFeatherPicked=false;
+
+    public static bool santosMission_WIP=false;
     public static bool santosMission_Done=false;
+
     public static bool kiyuMission_Done=false;
 
     public static int contador=0;
@@ -50,6 +54,8 @@ public class variablesGeneral : MonoBehaviour
     public static int num_random=0;
 
     public static bool jumpscareShown=false;
+    public static bool rennieAppeared=false;
+    public static bool talkedToPumpkin=false;
     
     
 
