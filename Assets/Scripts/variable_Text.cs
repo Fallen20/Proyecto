@@ -8,6 +8,8 @@ public class variable_Text : MonoBehaviour
     public static string blank=" ";
     public static string tresPuntos="...";
     public static string passDay_normal="Do you want to rest?";
+    public static string passDay_noWisp="Rest?";
+    public static string passDay_MissionWIP="I have things to do but I'm tired...";
     public static string passDay_lastDay="..It's time";
 
 
@@ -176,12 +178,14 @@ public class variable_Text : MonoBehaviour
     //-------
     //GHOUL
     //esta mision se acepta automaticamente
-    public static string ghoul_ForthDay_PreMission_1="Ganma, do you know have feathers?";
+    public static string ghoul_ForthDay_PreMission_1="Ganma, do you have any feathers?";
     public static string ganma_ForthDay_PreMission_Ghoul_1="N-no";
     public static string ghoul_ForthDay_PreMission_2="You don't? Awn.. I wanted more";
-    public static string ganma_ForthDay_PreMission_Ghoul_2="I can try to get some";
+
+    public static string ganma_ForthDay_PreMission_Ghoul_2="I can try to get some";//aceptas
     public static string ghoul_ForthDay_PreMission_3="Really? I will be so happy if you do";
 
+    public static string ghoul_ForthDay_InMission="I'm expecting an awesome feather from you!";
     //la mayoria son opcionales
     //pides plumas
     public static string pumpkin_ForthDay_Mission_Ghoul="A feather? Serve yourself kid";

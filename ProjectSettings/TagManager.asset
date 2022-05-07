@@ -42,6 +42,7 @@ TagManager:
   - hiddenPlace_awami
   - finalAwamiKomaMission
   - botonesMisionGhoul
+  - gameObjectBotonesMision_Ganma
   layers:
   - Default
   - TransparentFX
