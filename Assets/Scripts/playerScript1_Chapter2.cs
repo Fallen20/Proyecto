@@ -164,6 +164,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
     void FixedUpdate()
     {
+    	animator.SetBool("day3",variablesGeneral.sleepDay3);
+		animator.SetBool("day4",variablesGeneral.sleepDay4);
+		animator.SetBool("day5",variablesGeneral.sleepDay5);
+
         float horitontalMove=Input.GetAxisRaw("Horizontal");
     	float verticalMove=Input.GetAxisRaw("Vertical");
     	
@@ -499,7 +503,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					canvasGanma.GetComponent<Canvas>().enabled=true;
 					canvasOtros.GetComponent<Canvas>().enabled=false;
 
-					imagenGanma.sprite=expresionesGanma[12];
+					imagenGanma.sprite=expresionesGanma[11];
 					textoGanma.text=variable_Text.ganma_ForthDay_Rennie_1;
 					variablesGeneral.contarRennie++;
 				break;
@@ -508,7 +512,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[13];
+				imagenGanma.sprite=expresionesGanma[12];
 				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_2;
 				variablesGeneral.rennieAppeared=true;
 				rennieObjeto.SetBool("found",true);
@@ -535,7 +539,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
-				imagenGanma.sprite=expresionesGanma[14];
+				imagenGanma.sprite=expresionesGanma[13];
 				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_3;
 				canvasColorGanma.sprite=canvasAzul;
 				variablesGeneral.contarRennie++;
@@ -560,7 +564,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
-				imagenGanma.sprite=expresionesGanma[15];
+				imagenGanma.sprite=expresionesGanma[14];
 				textoGanma.text=variable_Text.ganma_ForthDay_Whiskers;
 				variablesGeneral.contarWhiskers++;
 				break;
@@ -622,7 +626,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
-				imagenGanma.sprite=expresionesGanma[10];
+				imagenGanma.sprite=expresionesGanma[9];
 				textoGanma.text=variable_Text.ganma_ForthDay_Pumpkin;
 				variablesGeneral.contarPumpkin++;
 				
@@ -658,7 +662,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
-				imagenGanma.sprite=expresionesGanma[11];
+				imagenGanma.sprite=expresionesGanma[10];
 				textoGanma.text=variable_Text.ganma_ForthDay_Racoon;
 				variablesGeneral.contarRacoon++;
 				break;
@@ -698,7 +702,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	public void thingsToDo_Question(){
-		imagenGanma.sprite=expresionesGanma[0];//change //por hacer la cara
+		imagenGanma.sprite=expresionesGanma[27];
 		textoGanma.text=variable_Text.passDay_MissionWIP;
 		
 		canvasGanma.GetComponent<Canvas>().enabled=true;//sacas el canvas
@@ -733,7 +737,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[20];
+				imagenGanma.sprite=expresionesGanma[19];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_1;
 				variablesGeneral.contar2++;
 				break;
@@ -752,7 +756,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[21];
+				imagenGanma.sprite=expresionesGanma[20];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_2;
 				variablesGeneral.contar2++;
 				break;
@@ -781,7 +785,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[22];
+				imagenGanma.sprite=expresionesGanma[21];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_3;
 				variablesGeneral.contar2++;
 
@@ -901,7 +905,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
 
-				imagenGanma.sprite=expresionesGanma[8];
+				imagenGanma.sprite=expresionesGanma[7];
 				textoGanma.text=variable_Text.ganma_ForthDay_PreMission_Ghoul_1;
 				variablesGeneral.contarGhoul++;
 				break;
@@ -969,7 +973,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		canvasGanma.GetComponent<Canvas>().enabled=true;
 		canvasOtros.GetComponent<Canvas>().enabled=false;
 
-		imagenGanma.sprite=expresionesGanma[28];
+		imagenGanma.sprite=expresionesGanma[26];
 		textoGanma.text=variable_Text.passDay_lastDay;
 	}
 
@@ -982,7 +986,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					canvasGanma.GetComponent<Canvas>().enabled=true;
 					canvasOtros.GetComponent<Canvas>().enabled=false;
 
-					imagenGanma.sprite=expresionesGanma[25];
+					imagenGanma.sprite=expresionesGanma[24];
 					textoGanma.text=variable_Text.ganmaMissionResponse_1_Ok;
 					variablesGeneral.contar+=1;
 					break;
@@ -1052,7 +1056,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[23];
+				imagenGanma.sprite=expresionesGanma[22];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreRacoonMission;
 				canvasColorGanma.sprite=canvasAzul;
 				elementsRacoonMission();			
@@ -1106,7 +1110,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[9];
+				imagenGanma.sprite=expresionesGanma[8];
 				textoGanma.text=variable_Text.ganma_ForthDay_PreMission_Ghoul_2;
 				variablesGeneral.contarGhoul++;
 				break;
@@ -1154,7 +1158,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[16];
+				imagenGanma.sprite=expresionesGanma[15];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_1;
 				variablesGeneral.contar2++;
 				break;
@@ -1173,7 +1177,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[17];
+				imagenGanma.sprite=expresionesGanma[16];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_2;
 				variablesGeneral.contar2++;
 				break;
@@ -1182,7 +1186,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[18];
+				imagenGanma.sprite=expresionesGanma[17];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_3;
 				canvasColorGanma.sprite=canvasAzul;
 				variablesGeneral.contar2++;
@@ -1192,7 +1196,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
-				imagenGanma.sprite=expresionesGanma[19];
+				imagenGanma.sprite=expresionesGanma[18];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_4;
 				canvasColorGanma.sprite=canvasAzul;
 				variablesGeneral.akaneMission_Done=true;
@@ -1224,7 +1228,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 
-				imagenGanma.sprite=expresionesGanma[7];
+				imagenGanma.sprite=expresionesGanma[6];
 				textoGanma.text=variable_Text.ganma_ForthDay_PostMission_Kiyu;
 				variablesGeneral.kiyuMission_Done=true;
 				variablesGeneral.contarKiyu++;
@@ -1245,7 +1249,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		else{botonWhiskers.gameObject.SetActive(true);}
 
 		//sacas el texto
-		imagenGanma.sprite=expresionesGanma[0];//change //por hacer
+		imagenGanma.sprite=expresionesGanma[29];
 		textoGanma.text=variable_Text.giveFeater;
 		canvasColorGanma.sprite=canvasAzul;
 
@@ -1360,7 +1364,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 }
 		 if(variablesGeneral.spriteTocado=="akane_interactable_Day1"){
 			 quienHablaOtros.text="Akane";
-			 imagenOtros.sprite=expresionesAkane[0];
+			 imagenOtros.sprite=expresionesAkane[7];
 			 textoOtros.text=variable_Text.akane_FirstDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
@@ -1405,7 +1409,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 }
 		 if(variablesGeneral.spriteTocado=="kiyu_Akane_interactable"){
 			 quienHablaOtros.text="Kiyu";
-			 imagenOtros.sprite=expresionesKiyu[7];
+			 imagenOtros.sprite=expresionesKiyu[8];
 			 textoOtros.text=variable_Text.kiyu_SecondDay;
 			 canvasOtros.GetComponent<Canvas>().enabled=true;
 		 }
@@ -1436,7 +1440,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		//dia3
 
 		 if(variablesGeneral.spriteTocado=="kiyu_interactable_Day3"){
-			imagenGanma.sprite=expresionesGanma[27];
+			imagenGanma.sprite=expresionesGanma[25];
 			textoGanma.text=variable_Text.kiyu_ThirdDay;
 			canvasGanma.GetComponent<Canvas>().enabled=true;
 			canvasColorGanma.sprite=canvasAzul;
@@ -1472,7 +1476,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 	
 		 	if(!variablesGeneral.talkedToRacoon){Racoon_Initial_Conversation();}
 			else if(variablesGeneral.contar4==3 && !variablesGeneral.racoonMission_WIP){//hablas de nuevo tras interactuar por primera vez
-				Debug.Log("aa22121212121");
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				gameObjectBotonesMision.GetComponent<Canvas>().enabled=true;
@@ -1510,7 +1513,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 if(variablesGeneral.spriteTocado=="hueso_mission"){
 
 			 if(variablesGeneral.racoonMission_WIP){
-				imagenGanma.sprite=expresionesGanma[24];
+				imagenGanma.sprite=expresionesGanma[23];
 				textoGanma.text=variable_Text.ganma_ThirdDay_RacoonMission_1;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasColorGanma.sprite=canvasNaranja;
@@ -1587,7 +1590,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.whiskersFeatherPicked){//to test
 			//mision, pillaste pluma y sigues en la mision
-				imagenGanma.sprite=expresionesGanma[25];
+				imagenGanma.sprite=expresionesGanma[5];
 				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 			}
@@ -1597,7 +1600,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		if(variablesGeneral.spriteTocado=="hemi_interactable_Day4"){
 			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){//to test
 			//mision sin acabar
-				imagenGanma.sprite=expresionesGanma[4];
+				imagenGanma.sprite=expresionesGanma[28];
 				textoGanma.text=variable_Text.hemi_ForthDay_Mission_Ghoul;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 			}
@@ -1618,7 +1621,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			}
 			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.pumpkinFeatherPicked){//to test
 				//mision, pillaste pluma y sigues en la mision
-				imagenGanma.sprite=expresionesGanma[25];
+				imagenGanma.sprite=expresionesGanma[5];
 				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 			}
@@ -1662,7 +1665,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				variablesGeneral.kiyuFeatherPicked=true;
 			}
 			else if(variablesGeneral.ghoulMission_WIP && variablesGeneral.kiyuFeatherPicked){
-				imagenGanma.sprite=expresionesGanma[25];
+				imagenGanma.sprite=expresionesGanma[5];
 				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 			}
@@ -1678,7 +1681,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			}
 			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){
 				quienHablaOtros.text="Ghoul";
-				imagenOtros.sprite=expresionesGhoul[1];//change //por hacer
+				imagenOtros.sprite=expresionesGhoul[7];
 				textoOtros.text=variable_Text.ghoul_ForthDay_InMission;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 			}
@@ -1712,7 +1715,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	void initialConversation(){
 		switch(variablesGeneral.contador){
 			case 0:
-
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
@@ -1820,6 +1822,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			variablesGeneral.sleepDay3=true;
 			//del segundo al tercero
 
+
 			//como puedes no hacer las misiones las tenemos que pasar a true para que no estorben en los siguientes dias
 			variablesGeneral.awamiKomaMission_Done=true;
 			variablesGeneral.awamiKomaMission_WIPBool=true;
@@ -1828,7 +1831,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		&& !variablesGeneral.sleepDay4 && !variablesGeneral.sleepDay5){
 			transform.position=new Vector3(forthDay.position.x,forthDay.position.y,0);//teleportDays
 			variablesGeneral.sleepDay4=true;
-			
 			//del tercero al cuarto
 
 			//como puedes no hacer las misiones las tenemos que pasar a true para que no estorben en los siguientes dias
