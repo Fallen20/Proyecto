@@ -96,18 +96,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	//variables a usar
     private GameObject objetoTrigger;
 	Random random=new System.Random();
-	private int contar=0;
-	private int contar2=0;
-	private int contar3=0;
-	private int contar4=0;
-	private int contarRennie=0;
-	private int contarWhiskers=0;
-	private int contarHemi=0;
-	private int contarPumpkin=0;
-	private int contarRacoon=0;
-	private int contarSantos=0;
-	private int contarKiyu=0;
-	private int contarGhoul=0;
 
 
     void Start()
@@ -296,8 +284,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 		else if (!variablesGeneral.akaneMission_Done && objetoTrigger!=null){
 			if(objetoTrigger.name=="akane_interactable_Day3"){				
-				if(contar2<6){Mission_Akane();}
-				else if(contar2==6){
+				if(variablesGeneral.contar2<6){Mission_Akane();}
+				else if(variablesGeneral.contar2==6){
 					//fade
 					trueFade();
 
@@ -320,17 +308,17 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				gameObjectBotonesMision_Ganma.GetComponent<Canvas>().enabled=false;
 				variablesGeneral.canMove=true;
-				contar=0;
-				contar2=0;
+				variablesGeneral.contar=0;
+				variablesGeneral.contar2=0;
 				variablesGeneral.contador2=0;
-				contarRennie=0;
+				variablesGeneral.contarRennie=0;
 			}
 		}
-		else if(contarRennie!=0 && contarRennie<2){
+		else if(variablesGeneral.contarRennie!=0 && variablesGeneral.contarRennie<2){
 			if(!variablesGeneral.rennieAppeared){rennieApperance();}
 		}
-		else if(!variablesGeneral.talkedToPumpkin && contarPumpkin!=0){conversacionPumpkin();}
-		else if(!variablesGeneral.ghoulMission_WIP && contarGhoul!=0 && contarGhoul<=2){preMission_Ghoul();}
+		else if(!variablesGeneral.talkedToPumpkin && variablesGeneral.contarPumpkin!=0){conversacionPumpkin();}
+		else if(!variablesGeneral.ghoulMission_WIP && variablesGeneral.contarGhoul!=0 && variablesGeneral.contarGhoul<=2){preMission_Ghoul();}
 		else if(objetoTrigger.name=="end_interactable"){
 			goSleep();
 		}
@@ -339,10 +327,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			gameObjectBotonesMision_Ganma.GetComponent<Canvas>().enabled=false;
 			botonesMisionGhoul.GetComponent<Canvas>().enabled=false;
 			variablesGeneral.canMove=true;
-			contarRennie=0;
-			contarHemi=0;
-			contarWhiskers=0;
-			contarRacoon=0;
+			variablesGeneral.contarRennie=0;
+			variablesGeneral.contarHemi=0;
+			variablesGeneral.contarWhiskers=0;
+			variablesGeneral.contarRacoon=0;
 		}
 		
 	}
@@ -350,12 +338,12 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	//cuando vas a cerrar el canvas de los otros...
 	public void hideCanvas_Otros(){
 		
-		if(contar3==2){contar3=0;}
+		if(variablesGeneral.contar3==2){variablesGeneral.contar3=0;}
 
 		if(!variablesGeneral.startDone){initialConversation();}
 		else{		
 			if(variablesGeneral.contador2==1){Mission_Koma_Awami();}
-			else if(contar<4 && contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
+			else if(variablesGeneral.contar<4 && variablesGeneral.contar!=0){//si has aceptado la mision, apretar saca el siguiente dialogo
 				acceptAwami_KomaMission();
 			}
 			else if(variablesGeneral.awamiKomaMission_WIP==1 || variablesGeneral.awamiKomaMission_WIP==2 && !variablesGeneral.awamiKomaMission_Done){
@@ -391,25 +379,24 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			}
 			else if(objetoTrigger!=null){
 				if(objetoTrigger.name=="akane_interactable_Day3" && !variablesGeneral.akaneMission_Done){
-					if(contar2<6){Mission_Akane();}
+					if(variablesGeneral.contar2<6){Mission_Akane();}
 					else{PostAkaneMission();}
 				}
 				else if(objetoTrigger.name=="koma_interactable_Day3"){
-					if(contar3==1){KomaConversation();}
+					if(variablesGeneral.contar3==1){KomaConversation();}
 					else{closeCanvasOtros();}
 				}
 				else if(objetoTrigger.name=="racoon_interactable_Day3"){
-					Debug.Log("aaaaaaaaaaaaaaaaaaaaaaa222  >>>"+contar4);
-					if(contar4==1){Racoon_Initial_Conversation();}
-					else if(contar4>4 && !variablesGeneral.racoonMission_WIP){acceptRacoonMission();}
+					if(variablesGeneral.contar4==1){Racoon_Initial_Conversation();}
+					else if(variablesGeneral.contar4>4 && !variablesGeneral.racoonMission_WIP){acceptRacoonMission();}
 					else{closeCanvasOtros();}
 				}
 				else if(objetoTrigger.name=="rennie_interactable_Day4"){conversacionRennie();}
-				else if(objetoTrigger.name=="whiskers_interactable_Day4" && !variablesGeneral.ghoulMission_WIP && contarWhiskers!=0){conversacionWhiskers();}//sin mision funciona
+				else if(objetoTrigger.name=="whiskers_interactable_Day4" && !variablesGeneral.ghoulMission_WIP && variablesGeneral.contarWhiskers!=0){conversacionWhiskers();}//sin mision funciona
 				else if(objetoTrigger.name=="hemi_interactable_Day4" && !variablesGeneral.ghoulMission_WIP){conversacionHemi();}
-				else if(objetoTrigger.name=="pumpkin_interactable_Day4" && !variablesGeneral.talkedToPumpkin && (contarPumpkin!=0 && contarPumpkin<2)){conversacionPumpkin();}
-				else if(objetoTrigger.name=="racoon_interactable_Day4" && contarRacoon!=0){conversacionRacoon_Day4();}
-				else if(objetoTrigger.name=="santos_interactable_Day4" && (contarSantos!=0 && contarSantos<=1) && !variablesGeneral.santosMission_Done){preMission_Santos();}
+				else if(objetoTrigger.name=="pumpkin_interactable_Day4" && !variablesGeneral.talkedToPumpkin && (variablesGeneral.contarPumpkin!=0 && variablesGeneral.contarPumpkin<2)){conversacionPumpkin();}
+				else if(objetoTrigger.name=="racoon_interactable_Day4" && variablesGeneral.contarRacoon!=0){conversacionRacoon_Day4();}
+				else if(objetoTrigger.name=="santos_interactable_Day4" && (variablesGeneral.contarSantos!=0 && variablesGeneral.contarSantos<=1) && !variablesGeneral.santosMission_Done){preMission_Santos();}
 				else if(objetoTrigger.name=="santos_interactable_Day4" && variablesGeneral.santosMission_WIP && !variablesGeneral.santosMission_Done){
 					variablesGeneral.santosMission_Done=true;
 					//fade
@@ -427,8 +414,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				}
 				else if(objetoTrigger.name=="kiyu_interactable_Day4" && !variablesGeneral.kiyuMission_Done && !variablesGeneral.ghoulMission_WIP){
 					
-					if(contarKiyu<2){preMission_Kiyu();}
-					else if(contarKiyu==3){//has apretado a aceptar
+					if(variablesGeneral.contarKiyu<2){preMission_Kiyu();}
+					else if(variablesGeneral.contarKiyu==3){//has apretado a aceptar
 						//fade
 						trueFade();
 						sortingLayerPositive();
@@ -440,17 +427,17 @@ public class playerScript1_Chapter2 : MonoBehaviour
 						Invoke("sortingLayerNegative", 2f);
 						
 						//sacas el fin de la mision
-						contarKiyu++;
+						variablesGeneral.contarKiyu++;
 
 						Invoke("postMissionKiyu", 1.7f);
 						
 					}
-					else if(contarKiyu>=4){postMissionKiyu();}
+					else if(variablesGeneral.contarKiyu>=4){postMissionKiyu();}
 					else{closeCanvasOtros();}
 				}
 				else if(objetoTrigger.name=="ghoul_interactable_Day4" && !variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done ){
-					if(contarGhoul<3 && contarGhoul!=0){preMission_Ghoul();}
-					else if(contarGhoul==4 || contarGhoul==5){
+					if(variablesGeneral.contarGhoul<3 && variablesGeneral.contarGhoul!=0){preMission_Ghoul();}
+					else if(variablesGeneral.contarGhoul==4 || variablesGeneral.contarGhoul==5){
 						acceptGhoulMission();
 					}
 					else{closeCanvasOtros();}
@@ -475,14 +462,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		gameObjectBotonesMision_Ganma.GetComponent<Canvas>().enabled=false;
 		variablesGeneral.canMove=true;
 
-		contar=0;
-		contar2=0;
+		variablesGeneral.contar=0;
+		variablesGeneral.contar2=0;
 		variablesGeneral.contador2=0;
-		contarSantos=0;
-		contarKiyu=0;
-		contarGhoul=0;
+		variablesGeneral.contarSantos=0;
+		variablesGeneral.contarKiyu=0;
+		variablesGeneral.contarGhoul=0;
 
-		if(variablesGeneral.racoonMission_WIP){contar4=2;}
+		if(variablesGeneral.racoonMission_WIP){variablesGeneral.contar4=2;}
 		
 		
 	}
@@ -507,14 +494,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		variablesGeneral.canMove=false;
 
 		//switch para sacar los 2
-		switch(contarRennie){
+		switch(variablesGeneral.contarRennie){
 			case 0://primer dialogo
 					canvasGanma.GetComponent<Canvas>().enabled=true;
 					canvasOtros.GetComponent<Canvas>().enabled=false;
 
 					imagenGanma.sprite=expresionesGanma[12];
 					textoGanma.text=variable_Text.ganma_ForthDay_Rennie_1;
-					contarRennie++;
+					variablesGeneral.contarRennie++;
 				break;
 
 			case 1://segundo
@@ -525,14 +512,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_2;
 				variablesGeneral.rennieAppeared=true;
 				rennieObjeto.SetBool("found",true);
-				contarRennie++;
+				variablesGeneral.contarRennie++;
 				
 				break;
 		}
 	}
 
 	void conversacionRennie (){
-		switch(contarRennie){
+		switch(variablesGeneral.contarRennie){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -540,7 +527,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Rennie";
 				imagenOtros.sprite=expresionesRennie[0];
 				textoOtros.text=variable_Text.rennie_ForthDay_1;
-				contarRennie++;
+				variablesGeneral.contarRennie++;
 				
 				break;
 				
@@ -551,14 +538,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenGanma.sprite=expresionesGanma[14];
 				textoGanma.text=variable_Text.ganma_ForthDay_Rennie_3;
 				canvasColorGanma.sprite=canvasAzul;
-				contarRennie++;
+				variablesGeneral.contarRennie++;
 				break;
 
 		}
 	}
 	
 	void conversacionWhiskers(){
-		switch(contarWhiskers){
+		switch(variablesGeneral.contarWhiskers){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -566,7 +553,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Whiskers";
 				imagenOtros.sprite=expresionesWhiskers[0];
 				textoOtros.text=variable_Text.whiskers_ForthDay_1;
-				contarWhiskers++;
+				variablesGeneral.contarWhiskers++;
 				break;
 				
 			case 1:
@@ -575,14 +562,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[15];
 				textoGanma.text=variable_Text.ganma_ForthDay_Whiskers;
-				contarWhiskers++;
+				variablesGeneral.contarWhiskers++;
 				break;
 
 		}
 	}
 
 	void conversacionHemi(){
-		switch(contarHemi){
+		switch(variablesGeneral.contarHemi){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -590,7 +577,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Hemi";
 				imagenOtros.sprite=expresionesHemi[0];
 				textoOtros.text=variable_Text.hemi_ForthDay_1;
-				contarHemi++;
+				variablesGeneral.contarHemi++;
 				
 				break;
 
@@ -601,7 +588,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Hemi";
 				imagenOtros.sprite=expresionesHemi[1];
 				textoOtros.text=variable_Text.hemi_ForthDay_2;
-				contarHemi++;
+				variablesGeneral.contarHemi++;
 				
 				break;
 				
@@ -618,7 +605,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void conversacionPumpkin (){
-		switch(contarPumpkin){
+		switch(variablesGeneral.contarPumpkin){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -626,7 +613,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Pumpkin";
 				imagenOtros.sprite=expresionesPumpkin[0];
 				textoOtros.text=variable_Text.pumpkin_ForthDay_1;
-				contarPumpkin++;
+				variablesGeneral.contarPumpkin++;
 				
 				break;
 
@@ -637,7 +624,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[10];
 				textoGanma.text=variable_Text.ganma_ForthDay_Pumpkin;
-				contarPumpkin++;
+				variablesGeneral.contarPumpkin++;
 				
 				break;
 				
@@ -649,14 +636,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesPumpkin[1];
 				textoOtros.text=variable_Text.pumpkin_ForthDay_2;
 				variablesGeneral.talkedToPumpkin=true;
-				contarPumpkin++;
+				variablesGeneral.contarPumpkin++;
 				break;
 
 		}
 	}
 
 	void conversacionRacoon_Day4 (){
-		switch(contarRacoon){
+		switch(variablesGeneral.contarRacoon){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -664,7 +651,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Racoon";
 				imagenOtros.sprite=expresionesRacoon[1];
 				textoOtros.text=variable_Text.racoon_ForthDay;
-				contarRacoon++;
+				variablesGeneral.contarRacoon++;
 				break;
 				
 			case 1:
@@ -673,7 +660,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[11];
 				textoGanma.text=variable_Text.ganma_ForthDay_Racoon;
-				contarRacoon++;
+				variablesGeneral.contarRacoon++;
 				break;
 
 		}
@@ -701,8 +688,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 	public void goSleep_Question_FinalDay(){
 		
-		Debug.Log("question");
-
 		canvasOtros.sortingOrder=-1;
 		//cambias cosas
 		quienHablaOtros.text="";
@@ -743,14 +728,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	public void Mission_Akane(){
-		switch(contar2){
+		switch(variablesGeneral.contar2){
 			case 0:
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasOtros.GetComponent<Canvas>().enabled=false;
 
 				imagenGanma.sprite=expresionesGanma[20];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_1;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 1:
@@ -760,7 +745,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Akane";
 				imagenOtros.sprite=expresionesAkane[4];
 				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_1;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 2:
@@ -769,7 +754,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[21];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_2;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 3:
@@ -779,7 +764,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Akane";
 				imagenOtros.sprite=expresionesAkane[5];
 				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_2;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 4:
@@ -789,7 +774,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Akane";
 				imagenOtros.sprite=expresionesAkane[6];
 				textoOtros.text=variable_Text.akane_ThirdDay_PreMission_3;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 5:
@@ -798,14 +783,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[22];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PreAkaneMission_3;
-				contar2++;
+				variablesGeneral.contar2++;
 
 				break;
 		}
 	}
 
 	public void KomaConversation(){
-		switch(contar3){
+		switch(variablesGeneral.contar3){
 			case 0:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -813,7 +798,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesKoma[6];
 				quienHablaOtros.text="Koma";
 				textoOtros.text=variable_Text.koma_ThirdDay_1;
-				contar3+=1;
+				variablesGeneral.contar3+=1;
 				break;
 
 			case 1:
@@ -823,13 +808,13 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesKoma[7];
 				quienHablaOtros.text="Koma";
 				textoOtros.text=variable_Text.koma_ThirdDay_2;
-				contar3+=1;
+				variablesGeneral.contar3+=1;
 				break;
 		}
 	}
 
 	public void Racoon_Initial_Conversation(){
-		switch(contar4){
+		switch(variablesGeneral.contar4){
 			case 0:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -837,7 +822,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesRacoon[2];
 				quienHablaOtros.text="Racoon";
 				textoOtros.text=variable_Text.racoon_ThirdDay_1;
-				contar4+=1;
+				variablesGeneral.contar4+=1;
 				break;
 
 			case 1:
@@ -847,22 +832,22 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesRacoon[3];
 				quienHablaOtros.text="Racoon";
 				textoOtros.text=variable_Text.racoon_ThirdDay_2;
-				contar4+=1;
+				variablesGeneral.contar4+=1;
 				variablesGeneral.talkedToRacoon=true;
-				contar4++;
+				variablesGeneral.contar4++;
 				break;
 		}
 	}
 
 	public void preMission_Santos(){
-		switch(contarSantos){
+		switch(variablesGeneral.contarSantos){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
 				quienHablaOtros.text="Santos";
 				imagenOtros.sprite=expresionesSantos[1];
 				textoOtros.text=variable_Text.santos_ForthDay_PreMission_1;
-				contarSantos++;
+				variablesGeneral.contarSantos++;
 				break;
 
 			case 1:
@@ -872,20 +857,20 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Santos";
 				imagenOtros.sprite=expresionesSantos[2];
 				textoOtros.text=variable_Text.santos_ForthDay_PreMission_2;
-				contarSantos++;
+				variablesGeneral.contarSantos++;
 				break;
 		}
 	}
 
 	public void preMission_Kiyu(){
-		switch(contarKiyu){
+		switch(variablesGeneral.contarKiyu){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
 				quienHablaOtros.text="Kiyu";
 				imagenOtros.sprite=expresionesKiyu[6];
 				textoOtros.text=variable_Text.kiyu_ForthDay_PreMission_1;
-				contarKiyu++;
+				variablesGeneral.contarKiyu++;
 				break;
 
 			case 1:
@@ -895,20 +880,20 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Kiyu";
 				imagenOtros.sprite=expresionesKiyu[7];
 				textoOtros.text=variable_Text.kiyu_ForthDay_PreMission_2;
-				contarKiyu++;
+				variablesGeneral.contarKiyu++;
 				break;
 		}
 	}
 
 	public void preMission_Ghoul(){
-		switch (contarGhoul){
+		switch (variablesGeneral.contarGhoul){
 			case 0:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
 				quienHablaOtros.text="Ghoul";
 				imagenOtros.sprite=expresionesGhoul[4];
 				textoOtros.text=variable_Text.ghoul_ForthDay_PreMission_1;
-				contarGhoul++;
+				variablesGeneral.contarGhoul++;
 				break;
 
 			case 1:
@@ -918,7 +903,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[8];
 				textoGanma.text=variable_Text.ganma_ForthDay_PreMission_Ghoul_1;
-				contarGhoul++;
+				variablesGeneral.contarGhoul++;
 				break;
 
 			case 2:
@@ -931,7 +916,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Ghoul";
 				imagenOtros.sprite=expresionesGhoul[5];
 				textoOtros.text=variable_Text.ghoul_ForthDay_PreMission_2;
-				contarGhoul++;
+				variablesGeneral.contarGhoul++;
 				break;
 		}
 	}
@@ -942,20 +927,20 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		if(variablesGeneral.spriteTocado=="wisp_interactable"){goSleep();}
 		if(variablesGeneral.spriteTocado=="awami_koma_interactable"){acceptAwami_KomaMission();}
 		if(variablesGeneral.spriteTocado=="racoon_interactable_Day3"){
-			contar4+=1;
+			variablesGeneral.contar4+=1;
 			acceptRacoonMission();
 		}
 		if(variablesGeneral.spriteTocado=="santos_interactable_Day4"){acceptSantosMission();}
 		if(variablesGeneral.spriteTocado=="kiyu_interactable_Day4"){acceptKiyuMission();}
 		if(variablesGeneral.spriteTocado=="ghoul_interactable_Day4"){
-			contarGhoul++;
+			variablesGeneral.contarGhoul++;
 			acceptGhoulMission();
 		}
 		if(variablesGeneral.spriteTocado=="end_interactable"){goSleep_Finale();}
 		else{
 			variablesGeneral.contador2=0;
-			contar=0;
-			if(variablesGeneral.racoonMission_WIP){contar4=2;}
+			variablesGeneral.contar=0;
+			if(variablesGeneral.racoonMission_WIP){variablesGeneral.contar4=2;}
 			
 		}
 	}
@@ -992,14 +977,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		variablesGeneral.awamiKomaMission_WIPBool=true;
 		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
 
-		switch(contar){
+		switch(variablesGeneral.contar){
 				case 0:
 					canvasGanma.GetComponent<Canvas>().enabled=true;
 					canvasOtros.GetComponent<Canvas>().enabled=false;
 
 					imagenGanma.sprite=expresionesGanma[25];
 					textoGanma.text=variable_Text.ganmaMissionResponse_1_Ok;
-					contar+=1;
+					variablesGeneral.contar+=1;
 					break;
 
 				case 1:
@@ -1009,7 +994,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					quienHablaOtros.text="Awami";
 					imagenOtros.sprite=expresionesAwami[5];
 					textoOtros.text=variable_Text.awami_SecondDay_PreMission_2;
-					contar+=1;
+					variablesGeneral.contar+=1;
 					
 					break;
 
@@ -1020,7 +1005,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					quienHablaOtros.text="Koma";
 					imagenOtros.sprite=expresionesKoma[5];
 					textoOtros.text=variable_Text.koma_SecondDay_PreMission_2;
-					contar+=1;
+					variablesGeneral.contar+=1;
 					break;
 				
 				case 3:
@@ -1042,16 +1027,15 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 					//te puedes mover
 					variablesGeneral.canMove=true;
-					contar+=1;
+					variablesGeneral.contar+=1;
 					break;
 			}		
 	}
 
 	void acceptRacoonMission(){
 		gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
-		Debug.Log("accept  "+contar4);
 
-		switch(contar4){
+		switch(variablesGeneral.contar4){
 			case 4:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -1059,7 +1043,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenOtros.sprite=expresionesRacoon[6];
 				quienHablaOtros.text="Racoon";
 				textoOtros.text=variable_Text.racoon_ThirdDay_PreMission_2;
-				contar4+=1;
+				variablesGeneral.contar4+=1;
 
 				
 				break;
@@ -1111,11 +1095,11 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		quienHablaOtros.text="Kiyu";
 		imagenOtros.sprite=expresionesKiyu[2];
 		textoOtros.text=variable_Text.kiyu_ForthDay_Mission_3;
-		contarKiyu++;
+		variablesGeneral.contarKiyu++;
 	}
 
 	void acceptGhoulMission(){
-		switch (contarGhoul) 
+		switch (variablesGeneral.contarGhoul) 
 		{
 			case 4:
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -1124,7 +1108,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[9];
 				textoGanma.text=variable_Text.ganma_ForthDay_PreMission_Ghoul_2;
-				contarGhoul++;
+				variablesGeneral.contarGhoul++;
 				break;
 
 			case 5:
@@ -1154,7 +1138,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 	
 	void PostAkaneMission(){
-		switch(contar2){
+		switch(variablesGeneral.contar2){
 			case 6:
 				fadeCanvas.sortingOrder=-1;
 				canvasGanma.GetComponent<Canvas>().enabled=false;
@@ -1163,7 +1147,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Akane";
 				imagenOtros.sprite=expresionesAkane[1];
 				textoOtros.text=variable_Text.akane_ThirdDay_PostMission_1;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 7:
@@ -1172,7 +1156,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[16];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_1;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 8:
@@ -1182,7 +1166,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Akane";
 				imagenOtros.sprite=expresionesAkane[2];
 				textoOtros.text=variable_Text.akane_ThirdDay_PostMission_2;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 9:
@@ -1191,7 +1175,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 				imagenGanma.sprite=expresionesGanma[17];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_2;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 10:
@@ -1201,7 +1185,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenGanma.sprite=expresionesGanma[18];
 				textoGanma.text=variable_Text.ganma_ThirdDay_PostAkaneMission_3;
 				canvasColorGanma.sprite=canvasAzul;
-				contar2++;
+				variablesGeneral.contar2++;
 				break;
 
 			case 11:
@@ -1225,7 +1209,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void postMissionKiyu(){
-		switch(contarKiyu){
+		switch(variablesGeneral.contarKiyu){
 			case 4:
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -1233,7 +1217,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Kiyu";
 				imagenOtros.sprite=expresionesKiyu[4];
 				textoOtros.text=variable_Text.kiyu_ForthDay_PostMission_4;
-				contarKiyu++;
+				variablesGeneral.contarKiyu++;
 				break;
 
 			case 5:
@@ -1243,7 +1227,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				imagenGanma.sprite=expresionesGanma[7];
 				textoGanma.text=variable_Text.ganma_ForthDay_PostMission_Kiyu;
 				variablesGeneral.kiyuMission_Done=true;
-				contarKiyu++;
+				variablesGeneral.contarKiyu++;
 				break;
 		}		
 	}
@@ -1351,11 +1335,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	}
 
 	void decideText(){//esto SOLO saca texto
-		Debug.Log("dia2 "+variablesGeneral.sleepDay2);
-		Debug.Log("dia3 "+variablesGeneral.sleepDay3);
-		Debug.Log("dia4 "+variablesGeneral.sleepDay4);
-		Debug.Log("dia5 "+variablesGeneral.sleepDay5);
-		Debug.Log("decidedewefwef "+variablesGeneral.racoonMission_WIP);
 
 		canvasColorGanma.sprite=canvasNaranja;
 		textoBotonAceptar.text="Accept";
@@ -1402,7 +1381,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 //dia2
 		 if(variablesGeneral.spriteTocado=="awami_koma_interactable"){
 			 if(variablesGeneral.awamiKomaMission_Done){
-				 contar=0;
+				 variablesGeneral.contar=0;
 				 //numero random
 					
 					int num_random=random.Next(0,6);
@@ -1492,7 +1471,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 if(variablesGeneral.spriteTocado=="racoon_interactable_Day3"){
 		 	
 		 	if(!variablesGeneral.talkedToRacoon){Racoon_Initial_Conversation();}
-			else if(contar4==3 && !variablesGeneral.racoonMission_WIP){//hablas de nuevo tras interactuar por primera vez
+			else if(variablesGeneral.contar4==3 && !variablesGeneral.racoonMission_WIP){//hablas de nuevo tras interactuar por primera vez
 				Debug.Log("aa22121212121");
 				canvasGanma.GetComponent<Canvas>().enabled=false;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
@@ -1529,7 +1508,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		 }
 
 		 if(variablesGeneral.spriteTocado=="hueso_mission"){
-		 	Debug.Log("hueso big");
 
 			 if(variablesGeneral.racoonMission_WIP){
 				imagenGanma.sprite=expresionesGanma[24];
@@ -1598,7 +1576,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 		if(variablesGeneral.spriteTocado=="rennie_interactable_Day4"){conversacionRennie();}
 		if(objetoTrigger.name=="whiskers_interactable_Day4"){
-			Debug.Log("porque entre en whiskers");
 			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.whiskersFeatherPicked){//to test
 			//mision, no pillaste pluma
 				quienHablaOtros.text="Whiskers";
@@ -1869,7 +1846,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		else if(variablesGeneral.sleepDay2 && variablesGeneral.sleepDay3
 		&& variablesGeneral.sleepDay4 && variablesGeneral.sleepDay5){
 			//del cquinto a la escena
-			Debug.Log("pasando a escena ups");
 			endChapter();
 
 		}

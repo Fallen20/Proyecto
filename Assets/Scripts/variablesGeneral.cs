@@ -50,14 +50,25 @@ public class variablesGeneral : MonoBehaviour
 
     public static bool kiyuMission_Done=false;
 
-    public static int contador=0;
-    public static int contador2=0;
-    public static int num_random=0;
 
     public static bool jumpscareShown=false;
     public static bool rennieAppeared=false;
     public static bool talkedToPumpkin=false;
     
     
-
+    public static int contador=0;
+    public static int contador2=0;
+    public static int num_random=0;
+    public static int contar=0;
+    public static int contar2=0;
+    public static int contar3=0;
+    public static int contar4=0;
+    public static int contarRennie=0;
+    public static int contarWhiskers=0;
+    public static int contarHemi=0;
+    public static int contarPumpkin=0;
+    public static int contarRacoon=0;
+    public static int contarSantos=0;
+    public static int contarKiyu=0;
+    public static int contarGhoul=0;
 }
