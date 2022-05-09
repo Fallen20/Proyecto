@@ -89,7 +89,6 @@ public class playerScript1_Chapter2 : MonoBehaviour
 	public Animator komaHidden;
 
 	public GameObject[] gameObjectRacoonMission;
-	private bool correctBonePicked;
 
 	public Animator rennieObjeto;	
 
@@ -235,12 +234,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				interactable();
 			}
 
-			if(correctBonePicked){
-				//ahora ya no se puede interactuar con el mismo
-				gameObjectRacoonMission[variablesGeneral.num_random].GetComponent<BoxCollider2D>().enabled=false;
-				//antes estaba en el if de decideText pero daba NullPointer cuando intentabas cerrar
-				//tambien ha estado en cerrar canvas de Ganma pero no lo detectaba
+			if(gameObjectRacoonMission[variablesGeneral.num_random].GetComponent<BoxCollider2D>().enabled==true && variablesGeneral.correctBonePicked){
+				gameObjectRacoonMission[variablesGeneral.num_random].GetComponent<BoxCollider2D>().enabled=variablesGeneral.correctBonePicked;
 			}
+
 
 		}
     }
@@ -323,9 +320,9 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 		else if(!variablesGeneral.talkedToPumpkin && variablesGeneral.contarPumpkin!=0){conversacionPumpkin();}
 		else if(!variablesGeneral.ghoulMission_WIP && variablesGeneral.contarGhoul!=0 && variablesGeneral.contarGhoul<=2){preMission_Ghoul();}
-		else if(objetoTrigger.name=="end_interactable"){
-			goSleep();
-		}
+		else if(objetoTrigger.name=="end_interactable"){goSleep();}
+		else if(variablesGeneral.contarGhoul==4 || variablesGeneral.contarGhoul==5){acceptGhoulMission();}
+		
 		else{
 			canvasGanma.GetComponent<Canvas>().enabled=false;
 			gameObjectBotonesMision_Ganma.GetComponent<Canvas>().enabled=false;
@@ -416,7 +413,12 @@ public class playerScript1_Chapter2 : MonoBehaviour
 					//sacas el fin de la mision
 					Invoke("endMissionSantos", 1.7f);
 				}
-				else if(objetoTrigger.name=="kiyu_interactable_Day4" && !variablesGeneral.kiyuMission_Done && !variablesGeneral.ghoulMission_WIP){
+				else if(objetoTrigger.name=="kiyu_interactable_Day4" && !variablesGeneral.kiyuMission_Done
+						&& (
+							(!variablesGeneral.ghoulMission_Done && !variablesGeneral.ghoulMission_WIP)  ||
+							(variablesGeneral.ghoulMission_Done && variablesGeneral.ghoulMission_WIP)
+						)
+							){
 					
 					if(variablesGeneral.contarKiyu<2){preMission_Kiyu();}
 					else if(variablesGeneral.contarKiyu==3){//has apretado a aceptar
@@ -441,9 +443,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				}
 				else if(objetoTrigger.name=="ghoul_interactable_Day4" && !variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done ){
 					if(variablesGeneral.contarGhoul<3 && variablesGeneral.contarGhoul!=0){preMission_Ghoul();}
-					else if(variablesGeneral.contarGhoul==4 || variablesGeneral.contarGhoul==5){
-						acceptGhoulMission();
-					}
+					else if(variablesGeneral.contarGhoul==4 || variablesGeneral.contarGhoul==5){acceptGhoulMission();}
 					else{closeCanvasOtros();}
 					
 				}
@@ -466,12 +466,13 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		gameObjectBotonesMision_Ganma.GetComponent<Canvas>().enabled=false;
 		variablesGeneral.canMove=true;
 
+		//reset vars
 		variablesGeneral.contar=0;
 		variablesGeneral.contar2=0;
 		variablesGeneral.contador2=0;
-		variablesGeneral.contarSantos=0;
-		variablesGeneral.contarKiyu=0;
 		variablesGeneral.contarGhoul=0;
+		variablesGeneral.contarKiyu=0;
+		variablesGeneral.contarSantos=0;
 
 		if(variablesGeneral.racoonMission_WIP){variablesGeneral.contar4=2;}
 		
@@ -1106,8 +1107,8 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		switch (variablesGeneral.contarGhoul) 
 		{
 			case 4:
-				canvasOtros.GetComponent<Canvas>().enabled=true;
-				canvasGanma.GetComponent<Canvas>().enabled=false;
+				canvasOtros.GetComponent<Canvas>().enabled=false;
+				canvasGanma.GetComponent<Canvas>().enabled=true;
 				gameObjectBotonesMision.GetComponent<Canvas>().enabled=false;
 
 				imagenGanma.sprite=expresionesGanma[8];
@@ -1316,9 +1317,12 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		//random si sacas una u otra
 		variablesGeneral.num_random=random.Next(0,50);
 
-		Debug.Log(variablesGeneral.num_random);
 		//pones la imagen
-		if(variablesGeneral.num_random==14 && !variablesGeneral.jumpscareShown){
+		if(variablesGeneral.num_random==14 && 
+			(!variablesGeneral.jumpscareShown
+			&& !variablesGeneral.sleepDay4 && !variablesGeneral.sleepDay5)){
+				//no ha salido antes
+				//no es el dia 4 ni 5
 			//musica ominosa con susto idk
 			imagenCanvasExtra.sprite=imagenesExtra[1];
 			variablesGeneral.jumpscareShown=true;//para que solo pueda salir una vez
@@ -1489,7 +1493,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				quienHablaOtros.text="Racoon";
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 
-				if(correctBonePicked && !variablesGeneral.racoonMission_Done){
+				if(variablesGeneral.correctBonePicked && !variablesGeneral.racoonMission_Done){
 					//has pillado el correcto
 					imagenOtros.sprite=expresionesRacoon[3];
 					textoOtros.text=variable_Text.racoon_ThirdDay_PostMission;
@@ -1512,12 +1516,14 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 		 if(variablesGeneral.spriteTocado=="hueso_mission"){
 
-			 if(variablesGeneral.racoonMission_WIP){
+			 if(variablesGeneral.racoonMission_WIP && !variablesGeneral.correctBonePicked){
+				 //estas con la mision y no has pillado el hueso antes (sino lo puedes pillar multiples veces)
 				imagenGanma.sprite=expresionesGanma[23];
 				textoGanma.text=variable_Text.ganma_ThirdDay_RacoonMission_1;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 				canvasColorGanma.sprite=canvasNaranja;
-				correctBonePicked=true;
+				variablesGeneral.correctBonePicked=true;
+
 
 			 }
 			 else{variablesGeneral.canMove=true;}
@@ -1556,7 +1562,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 			canvasOtros.GetComponent<Canvas>().enabled=true;
 		}
 		if(variablesGeneral.spriteTocado=="bounce_interactable_Day4"){
-			if(variablesGeneral.ghoulMission_WIP){//por testear
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){
 				quienHablaOtros.text="Bounce";
 				imagenOtros.sprite=expresionesBounce[1];
 				textoOtros.text=variable_Text.bounce_ForthDay_Mission_Ghoul;
@@ -1611,7 +1617,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		if(objetoTrigger.name=="pumpkin_interactable_Day4"){
 
 			
-			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.pumpkinFeatherPicked){//to test
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.pumpkinFeatherPicked && !variablesGeneral.ghoulMission_Done){
 			//mision, no pillaste pluma
 				quienHablaOtros.text="Pumpkin";
 				imagenOtros.sprite=expresionesPumpkin[3];
@@ -1619,7 +1625,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				variablesGeneral.pumpkinFeatherPicked=true;
 			}
-			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.pumpkinFeatherPicked){//to test
+			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done && variablesGeneral.pumpkinFeatherPicked){
 				//mision, pillaste pluma y sigues en la mision
 				imagenGanma.sprite=expresionesGanma[5];
 				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
@@ -1635,7 +1641,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 
 		if(objetoTrigger.name=="racoon_interactable_Day4"){
-			if(variablesGeneral.ghoulMission_WIP){
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){
 				quienHablaOtros.text="Racoon";
 				imagenOtros.sprite=expresionesRacoon[1];
 				textoOtros.text=variable_Text.racoon_ForthDay_Mission_Ghoul;
@@ -1650,25 +1656,26 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		}
 
 		if(objetoTrigger.name=="kiyu_interactable_Day4"){
-			if(variablesGeneral.kiyuMission_Done){
-				canvasOtros.GetComponent<Canvas>().enabled=true;
-
-				quienHablaOtros.text="Kiyu";
-				imagenOtros.sprite=expresionesKiyu[5];
-				textoOtros.text=variable_Text.kiyu_ForthDay_PostMission_PostInteract;
-			}//ya has hecho la mision
-			else if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.kiyuFeatherPicked){
+			
+			if(variablesGeneral.ghoulMission_WIP && !variablesGeneral.kiyuFeatherPicked && !variablesGeneral.ghoulMission_Done){
 				quienHablaOtros.text="Kiyu";
 				imagenOtros.sprite=expresionesKiyu[3];
 				textoOtros.text=variable_Text.kiyu_ForthDay_Mission_Ghoul;
 				canvasOtros.GetComponent<Canvas>().enabled=true;
 				variablesGeneral.kiyuFeatherPicked=true;
 			}
-			else if(variablesGeneral.ghoulMission_WIP && variablesGeneral.kiyuFeatherPicked){
+			else if(variablesGeneral.ghoulMission_WIP && variablesGeneral.kiyuFeatherPicked && !variablesGeneral.ghoulMission_Done){
 				imagenGanma.sprite=expresionesGanma[5];
 				textoGanma.text=variable_Text.ganma_ForthDay_Mission_Ghoul_GetFeather;
 				canvasGanma.GetComponent<Canvas>().enabled=true;
 			}
+			else if(variablesGeneral.kiyuMission_Done){
+				canvasOtros.GetComponent<Canvas>().enabled=true;
+
+				quienHablaOtros.text="Kiyu";
+				imagenOtros.sprite=expresionesKiyu[5];
+				textoOtros.text=variable_Text.kiyu_ForthDay_PostMission_PostInteract;
+			}//ya has hecho la mision
 			else{preMission_Kiyu();}
 		}
 

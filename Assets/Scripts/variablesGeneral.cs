@@ -71,4 +71,5 @@ public class variablesGeneral : MonoBehaviour
     public static int contarSantos=0;
     public static int contarKiyu=0;
     public static int contarGhoul=0;
+    public static bool correctBonePicked=false;
 }

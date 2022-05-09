@@ -182,7 +182,7 @@ public class variable_Text : MonoBehaviour
     public static string ganma_ForthDay_PreMission_Ghoul_1="N-no";
     public static string ghoul_ForthDay_PreMission_2="You don't? Awn.. I wanted more";
 
-    public static string ganma_ForthDay_PreMission_Ghoul_2="I can try to get some";//aceptas
+    public static string ganma_ForthDay_PreMission_Ghoul_2="I can try to get some!";//aceptas
     public static string ghoul_ForthDay_PreMission_3="Really? I will be so happy if you do";
 
     public static string ghoul_ForthDay_InMission="I'm expecting an awesome feather from you!";
