@@ -1714,10 +1714,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 	}
 
-
 	void endChapter(){//todo
 		ChangeScene.LoadScene("transition_part2_to_3");
 	}
+
 //------------
 	void initialConversation(){
 		switch(variablesGeneral.contador){
