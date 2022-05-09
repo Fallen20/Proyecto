@@ -21,7 +21,7 @@ public class ChangeScene : MonoBehaviour
             SceneManager.LoadScene("chapter2");
         }
         else if(changeInitialScene_Elements.chapterSelected=="chapter 3"){//TODO
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("chapter3");
         }
         
     }

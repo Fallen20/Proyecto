@@ -1716,7 +1716,7 @@ public class playerScript1_Chapter2 : MonoBehaviour
 
 
 	void endChapter(){//todo
-		Debug.Log("change scene+fade");
+		ChangeScene.LoadScene("transition_part2_to_3");
 	}
 //------------
 	void initialConversation(){
