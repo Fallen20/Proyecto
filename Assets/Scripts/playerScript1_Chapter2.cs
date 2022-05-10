@@ -1350,10 +1350,10 @@ public class playerScript1_Chapter2 : MonoBehaviour
 		imagenOtros.sprite=transparente;
 
 		 if(variablesGeneral.spriteTocado=="wisp_interactable"){
-		 	
+
 		 	if(variablesGeneral.sleepDay4){goSleep_Question_NoWisp();}
-		 	else if(variablesGeneral.sleepDay4 && variablesGeneral.ghoulMission_WIP){thingsToDo_Question();}
-		 	else if(variablesGeneral.sleepDay3 && variablesGeneral.racoonMission_WIP){thingsToDo_Question();}
+		 	else if(variablesGeneral.sleepDay4 && variablesGeneral.ghoulMission_WIP && !variablesGeneral.ghoulMission_Done){thingsToDo_Question();}
+		 	else if(variablesGeneral.sleepDay3 && variablesGeneral.racoonMission_WIP && !variablesGeneral.racoonMission_Done){thingsToDo_Question();}
 		 	else if(variablesGeneral.awamiKomaMission_WIPBool && !variablesGeneral.awamiKomaMission_Done){thingsToDo_Question();}
 		 	else{goSleep_Question();}
 		 }
