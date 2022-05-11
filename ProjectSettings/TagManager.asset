@@ -43,6 +43,8 @@ TagManager:
   - finalAwamiKomaMission
   - botonesMisionGhoul
   - gameObjectBotonesMision_Ganma
+  - Trigger_Enemy
+  - Collider_Enemy
   layers:
   - Default
   - TransparentFX

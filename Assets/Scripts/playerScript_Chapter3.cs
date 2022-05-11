@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerScript_Chapter3 : MonoBehaviour
 {
@@ -10,18 +11,26 @@ public class playerScript_Chapter3 : MonoBehaviour
     private SpriteRenderer spritePersonaje;
 
     private int damage=1;
+	public int health=100;
     private GameObject objetoTrigger;
+	private enemy_Attributes enemy;
+
+	public Canvas canvas;
+	public Text text;
+
+	private float startTime=0f;
 
     void Start(){
         //pillar lo del propio objeto
         collider=GetComponent<BoxCollider2D>();
 		animator=GetComponent<Animator>();
 		spritePersonaje=GetComponent<SpriteRenderer>();
+
+		canvas.GetComponent<Canvas>().enabled=false;
     }
 
     void FixedUpdate()
     {
-       
         float horitontalMove=Input.GetAxisRaw("Horizontal");
     	float verticalMove=Input.GetAxisRaw("Vertical");
     	
@@ -34,6 +43,7 @@ public class playerScript_Chapter3 : MonoBehaviour
     	animator.SetBool("horizMove",false);
         animator.SetBool("attack1", false);
         animator.SetBool("attack2", false);
+		damage=1;
 
     	if(variablesGeneral.canMove){//apreta D
 			if(variablesGeneral.moveDelta.x<0){
@@ -81,30 +91,65 @@ public class playerScript_Chapter3 : MonoBehaviour
 				transform.Translate(0,variablesGeneral.moveDelta.y*variablesGeneral.velocidad*Time.deltaTime,0);
 			}
 
-            if(Input.GetKey(KeyCode.Z)){//ataque 1
-                animator.SetBool("attack1", true);
-            }
-            if(Input.GetKey(KeyCode.X)){//ataque 2
-                animator.SetBool("attack2", true);
+
+			if(Input.GetMouseButtonDown(0)){//ataque 2 (corto)
+				animator.SetBool("attack2", true);
+			}
+
+			if(
+				(animator.GetCurrentAnimatorStateInfo(0).IsName("ganmaAttack1") ||
+				animator.GetCurrentAnimatorStateInfo(0).IsName("ganmaAttack2")) &&
+				animator.GetCurrentAnimatorStateInfo(0).normalizedTime>0 &&
+				objetoTrigger!=null){
+				attack();
+			}
+			if(Input.GetMouseButtonDown (1)){startTime =Time.time;}
+
+			if(Input.GetMouseButtonUp(1) && (Time.time-startTime)>0.2f){
+				animator.SetTrigger("attackTrigger");
+			}//si es un click largo
+
+            
+
+			
+			
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("ganmaAttack1") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime>0){
+                damage=2;//daño doble
             }
 
-            if(animator.GetCurrentAnimatorStateInfo(0).IsName("ganmaAttack1") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime>1){
-                damage=2;
-            }
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime>1){damage=1;}//se acaba
 
-            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime>1){
-                
-            }
+
+			if(health<=0){gameOver();}
 		}
+
     }
 
 
 //----------------
     void OnTriggerEnter2D(Collider2D coll) {
-        Debug.Log(coll.gameObject.name);
-        objetoTrigger=coll.gameObject;
+		Debug.Log("JUGADOR>"+coll.gameObject.name);
+
+		if(coll.gameObject.name=="enemigo_collider"){objetoTrigger=coll.gameObject;}
     }
 
 	void OnTriggerExit2D(Collider2D coll) {objetoTrigger=null;}
+//-------------------
 
+	void attack(){
+		//pillas el script
+		enemy=objetoTrigger.GetComponent<enemy_Attributes>();
+		Debug.Log(enemy==null);
+		//llamas al metodo
+		enemy.reduceHealth(damage);
+	}
+
+	public void taken_Damage(int enemyDamage){
+		health-=enemyDamage;
+	}
+
+	public void gameOver(){
+		canvas.GetComponent<Canvas>().enabled=true;
+	}
+//-------------------
 }
