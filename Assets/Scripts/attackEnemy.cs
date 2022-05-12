@@ -31,6 +31,9 @@ public class attackEnemy : MonoBehaviour
         if(coll.gameObject.name=="ganma"){
             objetoTrigger=coll.gameObject;
             //ataca
+            animator.SetBool("topMove",false);
+            animator.SetBool("bottomMove",false);
+            animator.SetBool("horizMove",true);
             animator.SetBool("attack", true);
 
             Invoke("falseAnimation",1f);

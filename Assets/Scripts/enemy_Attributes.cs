@@ -7,11 +7,12 @@ public class enemy_Attributes : MonoBehaviour
    public int health=15;
 
     void Update(){
-        Debug.Log("Enemigo healt> "+health);
-        if(health<=0){Destroy(gameObject);}
+        if(health<=0){
+            generate_Enemies_Middle.created-=1;
+            Destroy(gameObject);
+        }
     }
    public void reduceHealth(int damage){
-       Debug.Log("aaaaaaaaaaaaaaaaaa");
        health-=damage;
    }
 }

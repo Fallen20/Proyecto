@@ -15,8 +15,8 @@ public class playerScript_Chapter3 : MonoBehaviour
     private GameObject objetoTrigger;
 	private enemy_Attributes enemy;
 
-	public Canvas canvas;
-	public Text text;
+	//public Canvas canvas;
+	//public Text text;
 
 	private float startTime=0f;
 
@@ -26,7 +26,6 @@ public class playerScript_Chapter3 : MonoBehaviour
 		animator=GetComponent<Animator>();
 		spritePersonaje=GetComponent<SpriteRenderer>();
 
-		canvas.GetComponent<Canvas>().enabled=false;
     }
 
     void FixedUpdate()
@@ -145,11 +144,11 @@ public class playerScript_Chapter3 : MonoBehaviour
 	}
 
 	public void taken_Damage(int enemyDamage){
-		health-=enemyDamage;
+		if(variablesGeneral.canBeDamaged){health-=enemyDamage;}		
 	}
 
 	public void gameOver(){
-		canvas.GetComponent<Canvas>().enabled=true;
+		//canvas.GetComponent<Canvas>().enabled=true;
 	}
 //-------------------
 }

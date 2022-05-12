@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
+
 
 public class variablesGeneral : MonoBehaviour
 {
+    public static Random random=new System.Random();
     public static int pillado1=0;
     public static int pillado2=0;
     public static int pillado3=0;
@@ -72,4 +75,7 @@ public class variablesGeneral : MonoBehaviour
     public static int contarKiyu=0;
     public static int contarGhoul=0;
     public static bool correctBonePicked=false;
+
+
+    public static bool canBeDamaged=true;
 }
