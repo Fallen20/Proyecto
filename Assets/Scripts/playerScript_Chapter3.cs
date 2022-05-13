@@ -11,9 +11,12 @@ public class playerScript_Chapter3 : MonoBehaviour
     private SpriteRenderer spritePersonaje;
 
     private int damage=1;
-	public int health=100;
+	public int maxHealth=1000;
+	public int health;
     private GameObject objetoTrigger;
 	private enemy_Attributes enemy;
+
+	public healthBar_Script healthBar_Script;
 
 	//public Canvas canvas;
 	//public Text text;
@@ -25,6 +28,7 @@ public class playerScript_Chapter3 : MonoBehaviour
         collider=GetComponent<BoxCollider2D>();
 		animator=GetComponent<Animator>();
 		spritePersonaje=GetComponent<SpriteRenderer>();
+		health=maxHealth;
 
     }
 
@@ -120,6 +124,8 @@ public class playerScript_Chapter3 : MonoBehaviour
 
 
 			if(health<=0){gameOver();}
+					//Debug.Log("VIDAA> "+health);
+
 		}
 
     }
@@ -138,13 +144,16 @@ public class playerScript_Chapter3 : MonoBehaviour
 	void attack(){
 		//pillas el script
 		enemy=objetoTrigger.GetComponent<enemy_Attributes>();
-		Debug.Log(enemy==null);
 		//llamas al metodo
 		enemy.reduceHealth(damage);
 	}
 
 	public void taken_Damage(int enemyDamage){
-		if(variablesGeneral.canBeDamaged){health-=enemyDamage;}		
+		
+		if(variablesGeneral.canBeDamaged){
+			if(health-enemyDamage==health-1){health-=enemyDamage;}
+			healthBar_Script.SetHealth(health);
+		}
 	}
 
 	public void gameOver(){

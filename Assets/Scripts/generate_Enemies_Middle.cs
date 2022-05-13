@@ -4,49 +4,48 @@ using UnityEngine;
 
 public class generate_Enemies_Middle : MonoBehaviour
 {
-    public GameObject enemigo_Prefab;
-    public GameObject spaceToSpawn;
-    public Transform spawnPoint;
+    public GameObject enemigo_Prefab;//platformPrefab
+    public GameObject spaceToSpawn;//lastCreatedPlatfrom
+    public Transform spawnPoint;//referencePoint
+
     public static int created=0;
+    public int randomNum=1;
+    public bool enter=false;
+    
+
 
     private void Start() {
-        Debug.Log("yeeeeeeeeeeeeeet" +created);
-
         createEnemy();
     }
-    void Update()
-    {
-         if(created<9){
-             created++;
-            Debug.Log("yeeeeeeeeeeeeeet" +created);
-            Invoke("createEnemy",5f);
-        }        
+
+    public void createEnemy(){ 
         
-    }
-
-    public void createEnemy(){ //con esto saca literalmente muchos. Literal Lag
+        Invoke("randomNumber",3f);//llamas a un random
         
-        float espacioExtra=Random.Range(0, 15);
-        Vector3 targetCreationPoint = new Vector3(
-                       spawnPoint.position.x+espacioExtra,//el espacio extra es para que no se generen en el mismo sitio todos
-                       0,
-                       0);
 
-         spaceToSpawn=Instantiate(spaceToSpawn, targetCreationPoint, Quaternion.identity);
-    }
+        if(randomNum%2==0 && created<7){//condciones
+            created++;
+            float espacioExtra=Random.Range(0, 5);
+            Vector3 targetCreationPoint = new Vector3(
+                        spawnPoint.position.x+espacioExtra,//el espacio extra es para que no se generen en el mismo sitio todos
+                        0,
+                        0);
 
-    IEnumerator createEnemy2() {
-        Debug.Log("yeeeeeeeeeeeeeet" +created);
-        created++;
-        if(created<10){
-            Debug.Log("aui");
-            float espacioExtra=Random.Range(0, 15);
-
-            Instantiate(enemigo_Prefab, spawnPoint.position, Quaternion.identity);
-            yield return new WaitForSeconds((Random.Range(0,15)));//waitForSeconds es que espera X segundos para hacer un return
-            StartCoroutine(createEnemy2());
+            spaceToSpawn=Instantiate(enemigo_Prefab, targetCreationPoint, Quaternion.identity);
+                
+            
+            
         }
-        else{yield return null;}
+
+        Invoke("createEnemy",3f);//vuelves a llamar al metodo tras x segundos
         
     }
+
+    private void randomNumber(){
+        randomNum=variablesGeneral.random.Next(0,11);
+    }
+    private void canEnter(){enter=true;}
+
+
+
 }

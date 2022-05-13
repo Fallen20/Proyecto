@@ -20,6 +20,9 @@ public class enemy_Move : MonoBehaviour
     private bool chasing=false;
 
     private Vector3 lastMove;
+    private Vector3 posicionAntigua;
+    private Vector2 position_to_go;
+    private Vector3 actualPosition;
 
     public float velocidad_Chase=1.5f;
     public float velocidad_movRandom=0.5f;
@@ -63,7 +66,11 @@ public class enemy_Move : MonoBehaviour
 
                 if (timer >= timeToMove){//si puedes moverte (cooldown)
 
+                    posicionAntigua=transform.position;//guardas la posicion antes de moverte
+                    position_to_go=Vector2.Lerp(transform.position, desiredPos, Time.deltaTime * velocidad_movRandom);//guardas la posicion a la que quieres moverte
+
                     transform.position = Vector2.Lerp(transform.position, desiredPos, Time.deltaTime * velocidad_movRandom);//te mueves a la posicion
+                    changeAndFlipCharacter();
  
                    if (Vector3.Distance(transform.position, desiredPos) <= 0.01f){//si estás cerca del sitio que quieres ir, vuelves a llamarlo para moverlo
                         
@@ -84,7 +91,7 @@ public class enemy_Move : MonoBehaviour
                         else{
                             desiredPos = new Vector3(transform.position.x, yPos, transform.position.z);
                         }
-                        changeAndFlipCharacter();
+                        
                     
                         timer = 0.0f;//reset timer cooldown
                     }
@@ -96,6 +103,9 @@ public class enemy_Move : MonoBehaviour
 //------------------------
 
     public void MoveEnemy(Vector3 position){
+        posicionAntigua=transform.position;//guardas la posicion antes de moverte
+        position_to_go=Vector2.MoveTowards(transform.position, objetoTrigger.position, velocidad_Chase*Time.deltaTime);//guardas la posicion a la que quieres moverte
+
         transform.position=Vector2.MoveTowards(transform.position, objetoTrigger.position, velocidad_Chase*Time.deltaTime);
     
 
@@ -105,74 +115,48 @@ public class enemy_Move : MonoBehaviour
     }
 
     public void changeAndFlipCharacter(){
-        if(transform.position.x<0){sprite.flipX = true;}
-        else{sprite.flipX = false;}
-        animator.SetBool("horizMove",true);
+        // if(transform.position.x<0){sprite.flipX = true;}
+        // else{sprite.flipX = false;}
 
         //preguntar porque no paro de liarme y ha llegado un punto donde nada tiene sentido :(
             //TODO
-        // animator.SetBool("bottomMove",false);
-        // animator.SetBool("topMove",false);
-        // animator.SetBool("horizMove",false);
+        animator.SetBool("bottomMove",false);
+        animator.SetBool("topMove",false);
+        animator.SetBool("horizMove",false);
 
-        // //movimiento fijo de lado, sin diagonal
-        // if(transform.position.x!=0){
-        //     if(transform.position.x<0){sprite.flipX = true;}
-        //     else{sprite.flipX = false;}
-
-        //     if(transform.position.x>transform.position.y){
-        //         animator.SetBool("horizMove",true);
-        //     }
-        //     else{
-        //          if(transform.position.y<0){
-        //              animator.SetBool("bottomMove",true);
-        //          }
-        //          else{animator.SetBool("topMove",true);}
-        //     }
-            
-            
-        // }
         
-        // if(transform.position.y<0){//top
-        //     if(transform.position.y>transform.position.x){
-        //         animator.SetBool("topMove",true);
-        //     }
-        //     else{
-        //          if(transform.position.x<0){
-        //              animator.SetBool("horizMove",true);
-        //          }
-        //     }
-        //     sprite.flipX = true;
-        // }
-        // else if(transform.position.y>0){//bott
-        //     if(transform.position.y>transform.position.x){
-        //         animator.SetBool("bottomMove",true);
-        //     }
-        //     else{
-        //          if(transform.position.x<0){
-        //              animator.SetBool("horizMove",true);
-        //          }
-        //     }
-            
-        //     sprite.flipX = false;//flip
-        // }
 
-        // if(transform.position.y<0){//apreta w
-        //     Debug.Log("entro <0");
-        //     animator.SetBool("horizMove",false);
-        //     animator.SetBool("topMove",false);
+        if(posicionAntigua.x<position_to_go.x){
+            sprite.flipX = true;
+            animator.SetBool("horizMove",true);
+        }
+        else if(posicionAntigua.x>position_to_go.x){
+            sprite.flipX = false;
+            animator.SetBool("horizMove",true);
+        }
+        else if(posicionAntigua.y<position_to_go.y){
+            animator.SetBool("topMove",true);
+        }
+        else if(posicionAntigua.y>position_to_go.y){
+            animator.SetBool("bottomMove",true);
+        }
 
-        //     animator.SetBool("bottomMove",true);
-
-        //     Debug.Log("B "+animator.GetBool("bottomMove"));
-        // }
-        // else if(transform.position.y>0){//apreta s
-        //     Debug.Log("entro >0");
+        //si está cerca
+        //paras de correr
+        Debug.Log(Mathf.Abs(position_to_go.y-posicionAntigua.y));
+        if(Mathf.Abs(position_to_go.x-posicionAntigua.x)<0.01f){
+            Debug.Log("stopu");
+            animator.SetBool("horizMove",false);
+            // animator.SetBool("bottomMove",false);
+            // animator.SetBool("topMove",false);
+        
+        }
+        // else if(Mathf.Abs(position_to_go.y-posicionAntigua.y)<0.01f){
+        //     Debug.Log("stopu222");
         //     animator.SetBool("horizMove",false);
         //     animator.SetBool("bottomMove",false);
-
-        //     animator.SetBool("topMove",true);
-        //      Debug.Log("T "+animator.GetBool("topMove"));
+        //     animator.SetBool("topMove",false);
+        
         // }
 
 
@@ -180,7 +164,8 @@ public class enemy_Move : MonoBehaviour
      }
 //----------
     private void OnTriggerEnter2D(Collider2D coll) {
-        if(coll.gameObject.name=="ganma"){
+        Debug.Log("ENEMIGO> "+coll.gameObject.name);
+        if(coll.gameObject.name=="ganma_Lvl3"){
             objetoTrigger=coll.transform;
             lastMove=new Vector3();
         }
@@ -190,6 +175,10 @@ public class enemy_Move : MonoBehaviour
         chasing=false;
         lastMove=transform.position;
         objetoTrigger=null;
+    }
+//---------------------
+    public void eliminarObjeto(){
+        Destroy(gameObject);
     }
 
 }

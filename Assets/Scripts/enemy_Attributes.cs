@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class enemy_Attributes : MonoBehaviour
 {
-   public int health=15;
+    private int maxHealth=30;
+    public int health;
+    public TextMesh texto;
+    public enemy_Move enemigo;
 
-    void Update(){
-        if(health<=0){
-            generate_Enemies_Middle.created-=1;
-            Destroy(gameObject);
-        }
+    private void Start() {
+        health=maxHealth;
     }
-   public void reduceHealth(int damage){
+    void Update(){
+        texto.text=health+"/"+maxHealth;
+    }
+    public void reduceHealth(int damage){
        health-=damage;
+       if(health<=0){eliminar();}
+    }
+
+   public void eliminar(){
+       generate_Enemies_Start.created-=1;
+       enemigo.eliminarObjeto();
+       Destroy(gameObject);
    }
 }

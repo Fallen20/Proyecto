@@ -28,9 +28,11 @@ public class attackEnemy : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D coll) {
-        if(coll.gameObject.name=="ganma"){
+        if(coll.gameObject.name=="ganma_Lvl3"){
             objetoTrigger=coll.gameObject;
             //ataca
+
+            //lo mismo que en el de move
             animator.SetBool("topMove",false);
             animator.SetBool("bottomMove",false);
             animator.SetBool("horizMove",true);
