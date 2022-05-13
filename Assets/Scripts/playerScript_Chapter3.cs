@@ -17,9 +17,7 @@ public class playerScript_Chapter3 : MonoBehaviour
 	private enemy_Attributes enemy;
 
 	public healthBar_Script healthBar_Script;
-
-	//public Canvas canvas;
-	//public Text text;
+	public Canvas canvasGameOver;
 
 	private float startTime=0f;
 
@@ -28,7 +26,10 @@ public class playerScript_Chapter3 : MonoBehaviour
         collider=GetComponent<BoxCollider2D>();
 		animator=GetComponent<Animator>();
 		spritePersonaje=GetComponent<SpriteRenderer>();
+
+		//poner que la vida es la vida max
 		health=maxHealth;
+
 
     }
 
@@ -75,7 +76,6 @@ public class playerScript_Chapter3 : MonoBehaviour
 		
 			if(variablesGeneral.moveDelta.y<0){//apreta w
 				// animator.SetBool("BotMove",true);
-				// transform.localScale=Vector3.one;
 			}
 			else if(variablesGeneral.moveDelta.y>0){//apreta s
 	    		// animator.SetBool("topMove",true);
@@ -156,8 +156,6 @@ public class playerScript_Chapter3 : MonoBehaviour
 		}
 	}
 
-	public void gameOver(){
-		//canvas.GetComponent<Canvas>().enabled=true;
-	}
+	public void gameOver(){canvasGameOver.GetComponent<Canvas>().enabled=true;}
 //-------------------
 }

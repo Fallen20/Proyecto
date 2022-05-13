@@ -109,16 +109,13 @@ public class enemy_Move : MonoBehaviour
         transform.position=Vector2.MoveTowards(transform.position, objetoTrigger.position, velocidad_Chase*Time.deltaTime);
     
 
-         changeAndFlipCharacter();
+        changeAndFlipCharacter();
 
         lastMove=objetoTrigger.position; 
     }
 
     public void changeAndFlipCharacter(){
-        // if(transform.position.x<0){sprite.flipX = true;}
-        // else{sprite.flipX = false;}
 
-        //preguntar porque no paro de liarme y ha llegado un punto donde nada tiene sentido :(
             //TODO
         animator.SetBool("bottomMove",false);
         animator.SetBool("topMove",false);
@@ -143,28 +140,21 @@ public class enemy_Move : MonoBehaviour
 
         //si está cerca
         //paras de correr
-        Debug.Log(Mathf.Abs(position_to_go.y-posicionAntigua.y));
-        if(Mathf.Abs(position_to_go.x-posicionAntigua.x)<0.01f){
-            Debug.Log("stopu");
+        if(Mathf.Abs(position_to_go.x-posicionAntigua.x)<0.001f){
             animator.SetBool("horizMove",false);
-            // animator.SetBool("bottomMove",false);
-            // animator.SetBool("topMove",false);
         
         }
-        // else if(Mathf.Abs(position_to_go.y-posicionAntigua.y)<0.01f){
-        //     Debug.Log("stopu222");
-        //     animator.SetBool("horizMove",false);
-        //     animator.SetBool("bottomMove",false);
-        //     animator.SetBool("topMove",false);
+        if(Mathf.Abs(position_to_go.y-posicionAntigua.y)<0.001f){
+            animator.SetBool("bottomMove",false);
+            animator.SetBool("topMove",false);
         
-        // }
+        }
 
 
 
      }
 //----------
     private void OnTriggerEnter2D(Collider2D coll) {
-        Debug.Log("ENEMIGO> "+coll.gameObject.name);
         if(coll.gameObject.name=="ganma_Lvl3"){
             objetoTrigger=coll.transform;
             lastMove=new Vector3();

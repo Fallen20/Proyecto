@@ -9,7 +9,9 @@ public class scriptMiddleBarrier : MonoBehaviour
     void Start(){
     }
     private void OnTriggerEnter2D(Collider2D coll) {
-        if(coll.gameObject.name=="ganma"){variablas_LastChapter.triggerInitial();}
-        gameObject.SetActive(false);   
+        if(coll.gameObject.name=="ganma_Lvl3"){
+        	gameObject.SetActive(false);   
+        	variablas_LastChapter.triggerInitial();
+       	}
     }
 }
